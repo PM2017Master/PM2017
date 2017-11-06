@@ -25,6 +25,9 @@ Things you may want to cover:
 
 * Deployment instructions
 
-* ...minamihamatesuto
+* ... 以下テストコミット
+minamihamatesuto
 
 #小泉
+
+15T4041F
