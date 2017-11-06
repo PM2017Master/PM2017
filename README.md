@@ -26,3 +26,5 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...minamihamatesuto
+
+#小泉
