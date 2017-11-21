@@ -1,0 +1,2 @@
+class StudentExcelsController < StudentBaseController
+end

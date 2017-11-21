@@ -1,0 +1,2 @@
+module StaffAcademicCalendarsHelper
+end

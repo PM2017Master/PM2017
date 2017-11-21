@@ -1,0 +1,2 @@
+class SystemEmailsController < SystemBaseController
+end

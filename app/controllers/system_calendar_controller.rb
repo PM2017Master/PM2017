@@ -1,0 +1,2 @@
+class SystemCalendarController < SystemBaseController
+end

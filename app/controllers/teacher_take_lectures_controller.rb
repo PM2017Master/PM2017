@@ -1,0 +1,2 @@
+class TeacherTakeLecturesController < TeacherBaseController
+end

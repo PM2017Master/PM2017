@@ -1,0 +1,2 @@
+class AdminBackupController < ApplicationController
+end
