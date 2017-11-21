@@ -1,0 +1,2 @@
+class NoLectureDate < ApplicationRecord
+end
