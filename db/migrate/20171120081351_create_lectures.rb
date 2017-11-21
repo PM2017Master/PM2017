@@ -1,6 +1,6 @@
 class CreateLectures < ActiveRecord::Migration[5.1]
   def change
-    create_table :lectures,id: :uuid do |t|
+    create_table :lectures do |t|
       t.string :syllabus_code, null: false, unique: true
       t.string :name, null: false
       t.string :semester, null: false
