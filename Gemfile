@@ -7,23 +7,7 @@ end
 
 # self Adds
 
-# OSのプラットホームを判定してtherubyracerのインストールを実施するようにします
-if RUBY_PLATFORM =~ /mingw/
-  # pathでの設定はGemfileを基準とした相対パスでないと
-  # うまくいきませんでしたので、以下のようになります
-  gem 'therubyracer', :path => '../therubyracer-0.11.0beta1-x86-mingw32'
-else
-  gem 'libv8'
-  gem 'therubyracer'
-end
-
 gem 'kaminari'
-
-gem 'therubyracer'
-
-gem'less-rails'
-
-gem'twitter-bootstrap-rails'
 
 gem 'devise'
 
