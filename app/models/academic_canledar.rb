@@ -1,0 +1,2 @@
+class AcademicCanledar < ApplicationRecord
+end
