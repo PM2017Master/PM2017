@@ -1,7 +1,7 @@
 class CreateLectures < ActiveRecord::Migration[5.1]
   def change
     create_table :lectures do |t|
-      t.string :syllabus_code, null: false, unique: true
+      t.string :syllabus_code, null: false
       t.string :name, null: false
       t.string :semester, null: false
       t.string :year, null: false
@@ -10,6 +10,8 @@ class CreateLectures < ActiveRecord::Migration[5.1]
       t.integer :period
 
       t.timestamps
+
+      t.index [:syllabus_code], unique: true
     end
   end
 end
