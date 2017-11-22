@@ -19,12 +19,12 @@ ActiveRecord::Schema.define(version: 20171122042946) do
   end
 
   create_table "cancel_lectures", force: :cascade do |t|
-    t.integer "TeacherLecture_id"
+    t.integer "teacher_lecture_id"
     t.date "cancel_date", null: false
     t.string "period", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["TeacherLecture_id"], name: "index_cancel_lectures_on_TeacherLecture_id"
+    t.index ["teacher_lecture_id"], name: "index_cancel_lectures_on_teacher_lecture_id"
   end
 
   create_table "lectures", force: :cascade do |t|
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20171122042946) do
     t.integer "period"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["syllabus_code"], name: "index_lectures_on_syllabus_code", unique: true
   end
 
   create_table "no_lecture_dates", force: :cascade do |t|
@@ -46,52 +47,54 @@ ActiveRecord::Schema.define(version: 20171122042946) do
   end
 
   create_table "reports", force: :cascade do |t|
-    t.integer "TeacherLecture_id"
+    t.integer "teacher_lecture_id"
     t.string "title"
     t.text "content"
     t.date "deadline_date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["TeacherLecture_id"], name: "index_reports_on_TeacherLecture_id"
+    t.index ["teacher_lecture_id"], name: "index_reports_on_teacher_lecture_id"
   end
 
   create_table "staffs", force: :cascade do |t|
     t.string "email", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_staffs_on_email", unique: true
   end
 
   create_table "student_lectures", force: :cascade do |t|
-    t.integer "Student_id"
-    t.integer "Lecture_id"
+    t.integer "student_id"
+    t.integer "lecture_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["Lecture_id"], name: "index_student_lectures_on_Lecture_id"
-    t.index ["Student_id"], name: "index_student_lectures_on_Student_id"
+    t.index ["lecture_id"], name: "index_student_lectures_on_lecture_id"
+    t.index ["student_id"], name: "index_student_lectures_on_student_id"
   end
 
   create_table "students", force: :cascade do |t|
     t.string "email", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_students_on_email", unique: true
   end
 
   create_table "supplement_lectures", force: :cascade do |t|
-    t.integer "TeacherLecture_id"
+    t.integer "teacher_lecture_id"
     t.date "supplement_date", null: false
     t.string "period", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["TeacherLecture_id"], name: "index_supplement_lectures_on_TeacherLecture_id"
+    t.index ["teacher_lecture_id"], name: "index_supplement_lectures_on_teacher_lecture_id"
   end
 
   create_table "teacher_lectures", force: :cascade do |t|
-    t.integer "Teacher_id"
-    t.integer "Lecture_id"
+    t.integer "teacher_id"
+    t.integer "lecture_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["Lecture_id"], name: "index_teacher_lectures_on_Lecture_id"
-    t.index ["Teacher_id"], name: "index_teacher_lectures_on_Teacher_id"
+    t.index ["lecture_id"], name: "index_teacher_lectures_on_lecture_id"
+    t.index ["teacher_id"], name: "index_teacher_lectures_on_teacher_id"
   end
 
   create_table "teachers", force: :cascade do |t|
@@ -99,6 +102,7 @@ ActiveRecord::Schema.define(version: 20171122042946) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_teachers_on_email", unique: true
   end
 
 end
