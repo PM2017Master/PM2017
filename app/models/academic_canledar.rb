@@ -1,2 +1,0 @@
-class AcademicCanledar < ApplicationRecord
-end
