@@ -1,9 +1,9 @@
 class Lecture < ApplicationRecord
-    has_many :students, through: :student_lectures
     has_many :student_lectures
+    has_many :students, through: :student_lectures
 
-    has_many :teachers, through: :teacher_lectures
     has_many :teacher_lectures
+    has_many :teachers, through: :teacher_lectures
 
     has_many :cancel_lectures, through: :teacher_lectures
     has_many :supplement_lectures, through: :teacher_lectures
