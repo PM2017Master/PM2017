@@ -1,6 +1,6 @@
 class Report < ApplicationRecord
   belongs_to :teacher_lecture
 
-  has_many :teachers, throught: :teacher_lectures
-  has_many :lectures, throught: :teacher_lectures
+  has_many :teachers, through: :teacher_lectures
+  has_many :lectures, through: :teacher_lectures
 end
