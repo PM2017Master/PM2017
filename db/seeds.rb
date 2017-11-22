@@ -77,3 +77,8 @@ Report.create(
     content: "ソフトウェアの設計",
     deadline_date: Time.new(2017, 11, 30),
 )
+
+#学年暦
+AcademicCalendar.create(
+    no_lecture_date: Time.new(2017, 11, 23)
+)
