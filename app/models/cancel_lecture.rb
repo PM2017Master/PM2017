@@ -1,6 +1,6 @@
 class CancelLecture < ApplicationRecord
   belongs_to :teacher_lecture
 
-  has_many :teachers, through: :teacher_lectures
-  has_many :lectures, through: :teacher_lectures
+  has_one :teacher, through: :teacher_lecture
+  has_one :lecture, through: :teacher_lecture
 end
