@@ -22,7 +22,9 @@ Lecture.create(
     semester: "前期",
     year: "2017",
     day: "火",
-    period: 2
+    period: 2,
+    faculty: "工学部",
+    department: "情報工学科"
 )
 Lecture.create(
     syllabus_code: "T7501",
@@ -30,7 +32,9 @@ Lecture.create(
     semester: "前期",
     year: "2017",
     day: "水",
-    period: 3
+    period: 3,
+    faculty: "工学部",
+    department: "情報工学科"
 )
 
 ##集中講義
@@ -39,7 +43,9 @@ Lecture.create(
     name: "プロジェクトマネジメント論",
     semester: "後期", 
     year: "2017", 
-    is_intensive: true
+    is_intensive: true,
+    faculty: "工学部",
+    department: "情報工学科"
 )
 
 #担当講義
