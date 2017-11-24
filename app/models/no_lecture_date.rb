@@ -1,2 +1,0 @@
-class NoLectureDate < ApplicationRecord
-end

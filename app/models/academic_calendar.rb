@@ -1,0 +1,2 @@
+class AcademicCalendar < ApplicationRecord
+end
