@@ -8,6 +8,8 @@ class CreateLectures < ActiveRecord::Migration[5.1]
       t.boolean :is_intensive, default: false
       t.string :day
       t.integer :period
+      t.string :faculty, null: false
+      t.string :department
 
       t.timestamps
 
