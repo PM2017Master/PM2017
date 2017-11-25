@@ -1,2 +1,26 @@
-<h1>AdminOperateTeachers#new</h1>
-<p>Find me in app/views/admin_operate_teachers/new.html.erb</p>
+<%= form_for @teacher, url: {action: :create} do |f| %>
+    <h1>教員の登録</h1>
+    
+    <% if @teacher.errors.any? %>
+    <div>
+        <% @teacher.errors.full_messages.each do |msg| %>
+            <p><%= msg %></p>
+        <% end %>
+    </div>
+    <% end%>
+    
+    <div>
+        <%= f.label "メールアドレス" %><br />
+        <%= f.text_field :email %>
+    </div>
+
+    <div>
+        <%= f.label "教員名" %><br />
+        <%= f.text_field :name %>
+    </div>
+
+    <div>
+        <%= f.submit%>
+    </div>
+
+<% end %>

@@ -1,2 +1,27 @@
-<h1>AdminOperateStaffs#new</h1>
-<p>Find me in app/views/admin_operate_staffs/new.html.erb</p>
+<%= form_for @staff, url: {action: :create} do |f| %>
+<h1>事務員の登録</h1>
+
+<% if @staff.errors.any? %>
+<div>
+    <% @staff.errors.full_messages.each do |msg| %>
+        <p><%= msg %></p>
+    <% end %>
+</div>
+<% end%>
+
+<% if Staff.count > 0 %>
+    <div>
+        既に事務員は登録されています
+    </div>
+<% else %>
+    <div>
+        <%= f.label "メールアドレス" %><br />
+        <%= f.text_field :email %>
+    </div>
+
+    <div>
+        <%= f.submit%>
+    </div>
+<% end %>
+
+<% end %>
