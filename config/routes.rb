@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'admin_homes/index'
+  resources :admin_homes
 
   resources :admin_operate_staffs
 
