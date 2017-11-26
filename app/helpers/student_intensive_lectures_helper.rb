@@ -1,0 +1,2 @@
+module StudentIntensiveLecturesHelper
+end

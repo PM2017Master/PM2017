@@ -1,0 +1,2 @@
+module AdminOperateTeachersHelper
+end
