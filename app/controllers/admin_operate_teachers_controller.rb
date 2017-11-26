@@ -1,4 +1,4 @@
-class AdminOperateTeachersController < AdminController
+class AdminOperateTeachersController < AdminBaseController
   def index
   end
 
@@ -13,11 +13,11 @@ class AdminOperateTeachersController < AdminController
 
   def create
   end
-  
+
   def update
   end
 
   def destroy
   end
-  
+
 end
