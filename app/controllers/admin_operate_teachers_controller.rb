@@ -1,4 +1,4 @@
-class AdminOperateTeachersController < AdminController
+class AdminOperateTeachersController < AdminBaseController
   before_action :set_teacher, only: [:show, :edit, :update, :destroy]
   def index
     @teachers = Teacher.all
@@ -31,7 +31,7 @@ class AdminOperateTeachersController < AdminController
       render :new
     end
   end
-  
+
   def update
   end
 
@@ -48,5 +48,5 @@ private
   def set_teacher
     @teacher = Teacher.find(params[:id])
   end
-  
+
 end

@@ -1,40 +1,43 @@
 Rails.application.routes.draw do
 
-  resources :admin_homes
+  resources :admin_homes, only: [:index]
+  #resources
+  #admin
+  resources :admin_operate_staffs, only: [:index, :new, :create, :destroy]
 
-  resources :admin_operate_staffs
-
-  resources :admin_operate_teachers
+  resources :admin_operate_teachers,only: [:index, :new, :edit, :create, :destroy]
 
   resources :admin_operate_admins
 
-  resources :staff_academic_calendars
+  #staff
+  resources :staff_academic_calendars,only: [:index, :new, :create, :destroy]
 
-  resources :staff_operate_lectures
+  resources :staff_operate_lectures,only: [:index, :new, :create] do
+  collection do
+    get :search
+    get :backup
+  end
+end
 
-  resources :teacher_homes
+  resources :staff_homes,only: [:index]
 
-  resources :stundet_homes
+  #teacher
+  resources :teacher_homes,only: [:index]
 
-  resources :staff_homes
+  resources :teacher_reports,only: [:index, :new, :create, :destroy]
 
-  resources :teacher_reports
+  resources :teacher_lecture_dates,only: [:new, :create]
 
-  resources :teacher_lecture_dates
+  #student
+  resources :stundet_homes,only: [:index]
 
-  resources :student_intensive_lectures
+  resources :student_intensive_lectures,only: [:index, :new, :create, :destroy]
 
-  resources :student_lectures
+  resources :student_lectures,only: [:new, :create]
 
 
   root 'welcom#home'
 
-
-  
-  #get 'student_base/rogin'
-  #get 'teacher_base/rogin'
-  #get 'staff_base/rogin'
-  #get 'admin/rogin'
 
   get 'authorize' => 'auth#gettoken'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
