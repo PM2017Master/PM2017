@@ -1,25 +1,103 @@
 ﻿<h1>Student's Home Page</h1>
 <p>
-	<table class="table table-bordered">
-		<thead>
-			<tr>
-				<td>あ</td>
-				<td>b</td>
-				<td>c</td>
-				<td>d</td>
-				<td>e</td>
-				<td>f</td>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>1</td>
-				<td>2</td>
-				<td>3</td>
-				<td>4</td>
-				<td>5</td>
-				<td>6</td>
-			</tr>
-		</tbody>
-	</table>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<td>月</td>
+							<td>火</td>
+							<td>水</td>
+							<td>木</td>
+							<td>金</td>
+							<td>土</td>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</tbody>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</tbody>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</tbody>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</tbody>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="row">
+					<div class="col-md-6">
+						集中講義
+					</div>
+					<div class="col-md-6">
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<td>PM</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>PM</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col-md-1">
+				<div class="row">
+					<button type="button" class="btn btn-default" href=">一般講義登録</button>
+					<button type="button" class="btn btn-default">集中講義登録</button>
+					<button type="button" class="btn btn-default">集中講義取り消し</button>
+				</div>
+				<div class="row">
+					<br>
+					<br>
+					<br>
+					<br>
+					<br>
+					<button type="button" class="btn btn-default">ログアウト</button>
+				</div>
+			</div>
+		</div>
+	</div>
 </p>
