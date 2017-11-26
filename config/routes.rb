@@ -32,7 +32,7 @@ end
   resources :student_homes,only: [:index]
 
   resources :student_intensive_lectures,only: [:index, :new, :create, :destroy]
-
+  get 'student_lectures' => 'student_lectures#new'
   resources :student_lectures,only: [:new, :create]
 
 

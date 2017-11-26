@@ -1,4 +1,4 @@
 class StudentHomesController < StudentBaseController
-  def index
+  def inde
   end
 end

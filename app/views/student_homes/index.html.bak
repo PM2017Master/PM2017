@@ -94,7 +94,7 @@
 					<br>
 					<br>
 					<br>
-					<button type="button" class="btn btn-default" onClick="location.href=''">ログアウト</button>
+					<button type="button" class="btn btn-default" onClick="location.href='login'">ログアウト</button>
 				</div>
 			</div>
 		</div>
