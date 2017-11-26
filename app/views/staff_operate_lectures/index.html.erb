@@ -1,6 +1,25 @@
-<h1>事務員機能一覧</h1>
-  <%= button_to "講義登録", {controller: 'staff_operate_lectures', action: 'new'}, {method: :get, class: "btn btn-default"}%>
-  <%= button_to "講義バックアップ", {controller: 'staff_operate_lectures', action: 'backup'}, {method: :get, class: "btn btn-default"}%>
-  <%= button_to "講義検索", {controller: 'staff_operate_lectures', action: 'search'}, {method: :get, class: "btn btn-default"}%>
-  <%= button_to "学年暦登録", {controller: 'staff_academic_calendars', action: 'new'}, {method: :get, class: "btn btn-default"}%>
-  <%= button_to "学年暦表示・削除", {controller: 'staff_academic_calendars', action: 'index'}, {method: :get, class: "btn btn-default"}%>
+<h1>講義一覧と検索</h1>
+<table class='table'>
+  <thead class="thead-inverse">
+    <tr>
+      <th>講義名</th>
+      <th>教員名</th>
+      <th>曜日</th>
+      <th>限</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @lectures.each do |lecture|%>
+   <tr>
+     <td><%= lecture.name %></td>
+     <td>
+       <% lecture.teachers.each do |a| %>
+         <%= a.name%>
+         <%end%>
+     </td>
+     <td><%= lecture.day %></td>
+     <td><%= lecture.period %></td>
+   </tr>
+   <%end%>
+ </tbody>
+</table>
