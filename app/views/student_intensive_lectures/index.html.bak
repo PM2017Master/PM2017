@@ -19,7 +19,7 @@
 			</div>
 			<div class="col-md-6">
 				<button type="button" class="btn btn-default">アップロード</button>
-				<button type="button" class="btn btn-default" onClick="location.href='student_homes'">戻る</button>
+				<button type="button" class="btn btn-default" onClick="location.href='student_home'">戻る</button>
 			</div>
 		</div>
 	</div>

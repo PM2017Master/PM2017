@@ -29,7 +29,7 @@ end
   resources :teacher_lecture_dates,only: [:new, :create]
 
   #student
-  resources :stundet_homes,only: [:index]
+  resources :student_homes,only: [:index]
 
   resources :student_intensive_lectures,only: [:index, :new, :create, :destroy]
 
@@ -41,7 +41,7 @@ end
 
   get 'authorize' => 'auth#gettoken'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  
-  get 'student' => 'student_home#home'
+
+  get 'login' => 'welcom#home'
 end
   

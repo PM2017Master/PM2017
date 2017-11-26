@@ -1,6 +1,5 @@
 ﻿<h1>Student's Home Page</h1>
 <p>
-
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6">
@@ -85,7 +84,7 @@
 			
 			<div class="col-md-1">
 				<div class="row">
-					<button type="button" class="btn btn-default" href=">一般講義登録</button>
+					<button type="button" class="btn btn-default" onClick="location.href='student_intensive_lectures'">一般講義登録</button>
 					<button type="button" class="btn btn-default">集中講義登録</button>
 					<button type="button" class="btn btn-default">集中講義取り消し</button>
 				</div>
@@ -95,7 +94,7 @@
 					<br>
 					<br>
 					<br>
-					<button type="button" class="btn btn-default">ログアウト</button>
+					<button type="button" class="btn btn-default" onClick="location.href=''">ログアウト</button>
 				</div>
 			</div>
 		</div>

@@ -1,6 +1,7 @@
 class StudentHomeController < StudentBaseController
 
-  def home
+  def index
+  	render "student_homes/index"
   end
     
 end
