@@ -1,7 +1,7 @@
 class StaffOperateLecturesController < StaffBaseController
   #講義一覧表示画面
   def index
-    @lectures = Lecture.all
+      @lectures = Lecture.all
   end
 
   #講義追加画面
@@ -16,6 +16,8 @@ class StaffOperateLecturesController < StaffBaseController
 
   #講義検索
   def search
+    @lectures = Lecture.search(params)
+    render 'index'
   end
 
   #講義バックアップ

@@ -22,4 +22,12 @@ class Lecture < ApplicationRecord
     def self.updatable_attributes
       ["syllabus_code","name","semester","year","is_intensive","day","period","faculty","department"] #登録可能なデータをバリデーション
     end
+
+    def self.search params
+      if params[:search].present? or params[:faculty].present?
+        where("name like ? or faculty = ? or department = ?","%#{params[:search]}%",params[:faculty],params[:department])
+      else
+        Lecture.all
+    end
+  end
 end
