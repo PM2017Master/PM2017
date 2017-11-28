@@ -1,14 +1,17 @@
 #  atsushi's place
 require 'net/https'
-class SystemCalendarController < SystemBaseController
+class SystemCalendarsController < SystemBaseController
     include AuthHelper
     
     def sendcalendar
-        email = params[:email]#User.find_by(email: params[:email])
+        event_type = "レポート"
+        event_title = "プロジェクトマネジメント論#{event_type}"
+        event_start = Time.new(2017, 11, 29)
+        event_end = Time.new(2017, 11, 30)
+        email = Student.find_by(email: "pmstudent2017@outlook.com").email
 
         token = get_access_token(email)
 
-        email = #session[:user_email]
         if token
         # If a token is present in the session, get events from the calendar
         callback = Proc.new do |r| 
@@ -18,13 +21,13 @@ class SystemCalendarController < SystemBaseController
         end
 
         event_content = {
-            "subject" => "My event2",
-            "start" => {
-            "dateTime": "2017-11-06T06:20:36.767Z",
-            "timeZone": "UTC"
-            },
+            "subject" => event_title,
+             "start" => {
+             "dateTime": event_start,
+             "timeZone": "UTC"
+             },
             "end" => {
-            "dateTime": "2017-11-13T06:20:36.767Z",
+            "dateTime": event_end,
             "timeZone": "UTC"
             }
         }.to_json
@@ -50,6 +53,7 @@ class SystemCalendarController < SystemBaseController
         #@events = graph.me.events.order_by('start/dateTime asc')
 
         #print(@events)
+        redirect_to root_url
         else
         # If no token, redirect to the root url so user
         # can sign in.
