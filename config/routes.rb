@@ -46,6 +46,9 @@ end
 
 
   get 'authorize' => 'auth#gettoken'
+  get 'student_homes/index'
+  get 'staff_homes/index'
+  get 'teacher_homes/index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   get 'login' => 'welcom#home'
