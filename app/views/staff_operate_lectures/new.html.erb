@@ -1,2 +1,5 @@
-<h1>StaffOperateLectures#new</h1>
-<p>Find me in app/views/staff_operate_lectures/new.html.erb</p>
+<h1>講義一括登録</h1>
+<%= form_tag({controller: "staff_operate_lectures", action: "create", method: "post"}, {multipart: true}) do %>
+  <div><%= file_field_tag :file %></div>
+  <%= submit_tag "アップロード", data: { confirm: "講義を登録してもよろしいですか？"} %>
+<% end %>
