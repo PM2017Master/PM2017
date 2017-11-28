@@ -1,10 +1,10 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2>パスワード変更</h2>
 
 <%= form_for(resource, as: resource_name, url: admin_registration_path, html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="field">
-    <%= f.label :email %><br />
+    メールアドレス<br /><!--<%= f.label :email %><br />-->
     <%= f.email_field :email, autofocus: true %>
   </div>
 
@@ -13,26 +13,28 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    <br />現在のパスワード<!--<%= f.label :current_password %>--> <br />
     <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
 
+  <div class="field">
+    <br />新しいのパスワード<em>　<%= @minimum_password_length %> 文字以上</em><br /><!--<%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />-->
+    <%= f.password_field :password, autocomplete: "off" %>
+    <!--<% if @minimum_password_length %>
+      <br />
+      <em>* <%= @minimum_password_length %> 文字以上必要です</em>
+    <% end %>-->
+  </div>
+
+  <div class="field">
+    確認用パスワード<br /><!--<%= f.label :password_confirmation %><br />-->
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+
+
+
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "パスワード変更" %>
   </div>
 <% end %>
 
