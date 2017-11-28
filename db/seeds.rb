@@ -68,6 +68,24 @@ TeacherLecture.create(
     lecture_id: Lecture.find_by(name: "プロジェクトマネジメント論").id
 )
 
+#履修講義
+StudentLecture.create(
+    student_id: Student.find_by(email: "pmstudent2017@outlook.com").id, 
+    lecture_id: Lecture.find_by(name: "プロジェクトマネジメント論").id
+)
+StudentLecture.create(
+    student_id: Student.find_by(email: "pmstudent1@outlook.com").id, 
+    lecture_id: Lecture.find_by(name: "プロジェクトマネジメント論").id
+)
+StudentLecture.create(
+    student_id: Student.find_by(email: "pmstudent2@outlook.com").id, 
+    lecture_id: Lecture.find_by(name: "プロジェクトマネジメント論").id
+)
+StudentLecture.create(
+    student_id: Student.find_by(email: "pmstudent3@outlook.com").id, 
+    lecture_id: Lecture.find_by(name: "プロジェクトマネジメント論").id
+)
+
 #休講
 @teacher_lecture = TeacherLecture.find_by(
     teacher_id: Teacher.find_by(name: "上田賀一").id, 

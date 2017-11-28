@@ -60,6 +60,6 @@ end
   get 'login' => 'welcom#home'
 
   get "system_emails" => "system_emails#sendmail" 
-
+  get "system_calendars" => "system_calendars#sendcalendar"
 end
   
