@@ -1,0 +1,10 @@
+class StudentLecturesController < StudentBaseController
+  #登録画面
+  def new
+  render "student_homes/index"
+  end
+  
+  #講義DBに登録
+  def create
+  end
+end

@@ -58,7 +58,11 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-
 #Authで使うGEM
 gem 'oauth2'
 gem 'activerecord-session_store'
+
+#メールアドレス取得で使
+gem 'microsoft_graph'
+
+gem 'bcrypt-ruby', '3.1.1.rc1', :require => 'bcrypt'

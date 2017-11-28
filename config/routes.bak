@@ -1,23 +1,11 @@
 Rails.application.routes.draw do
 
-  devise_for :admins , :controllers => {
-    #as :admin do
-      :sessions      => "admins/sessions",
-      :registrations => "admins/registrations",
-      :passwords     => "admins/passwords",
-      #admins
-    } 
-  
-  devise_scope :admin do
-    get 'admins/edit' => 'admins/registrations#edit', :as => 'edit_admin_registration'
-    put 'admins' => 'admins/registrations#update', :as => 'admin_registration'
-  end
-  resources :admin_homes, only: [:index]
+  get 'admin_homes/index'
   #resources
   #admin
-  resources :admin_operate_staffs, only: [:index, :new, :create, :destroy]
+  resources :admin_operate_staffs, only: [:edit]
 
-  resources :admin_operate_teachers,only: [:index, :new, :edit, :create, :destroy]
+  resources :admin_operate_teachers,only: [:index, :new, :create, :destroy]
 
   resources :admin_operate_admins
 
@@ -44,7 +32,7 @@ end
   resources :student_homes,only: [:index]
 
   resources :student_intensive_lectures,only: [:index, :new, :create, :destroy]
-  get 'student_lectures' => 'student_lectures#new'
+
   resources :student_lectures,only: [:new, :create]
 
 
@@ -52,9 +40,6 @@ end
 
 
   get 'authorize' => 'auth#gettoken'
-  get 'student_homes/index'
-  get 'staff_homes/index'
-  get 'teacher_homes/index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   get 'login' => 'welcom#home'

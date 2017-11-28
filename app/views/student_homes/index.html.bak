@@ -84,7 +84,7 @@
 			
 			<div class="col-md-1">
 				<div class="row">
-					<button type="button" class="btn btn-default" onClick="location.href='student_lectures'">一般講義登録</button>
+					<button type="button" class="btn btn-default" onClick="location.href='student_intensive_lectures'">一般講義登録</button>
 					<button type="button" class="btn btn-default">集中講義登録</button>
 					<button type="button" class="btn btn-default">集中講義取り消し</button>
 				</div>
