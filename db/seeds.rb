@@ -7,6 +7,14 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 #管理者
+Admin.find_or_create_by(id: 1) do |user|
+    user.email = 'admin@admin'
+    user.password = 'password'
+  end
+
+#学生
+#教員
+Student.create(email: "pmstudent2017@outlook.com")
 
 #教員
 Teacher.create(email: "pmteacher2017@outlook.com", name:"上田賀一")
