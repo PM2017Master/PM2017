@@ -11,6 +11,11 @@ gem 'kaminari'
 
 gem 'devise'
 
+# Use jquery as the JavaScript library
+gem 'jquery-rails'
+# Use jquery-UI as the JavaScript library
+gem 'jquery-ui-rails'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.3'
 # Use sqlite3 as the database for Active Record
