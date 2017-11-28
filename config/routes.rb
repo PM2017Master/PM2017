@@ -1,11 +1,17 @@
 Rails.application.routes.draw do
 
-  get 'admin_homes/index'
+  devise_for :admins
+  as :admin do
+    root to: "admin_homes#index"
+    get 'admins/edit' => 'devise/registrations#edit', :as => 'edit_admin_registration'
+    put 'admins' => 'devise/registrations#update', :as => 'admin_registration'
+  end
+  resources :admin_homes, only: [:index]
   #resources
   #admin
-  resources :admin_operate_staffs, only: [:edit]
+  resources :admin_operate_staffs, only: [:index, :new, :create, :destroy]
 
-  resources :admin_operate_teachers,only: [:index, :new, :create, :destroy]
+  resources :admin_operate_teachers,only: [:index, :new, :edit, :create, :destroy]
 
   resources :admin_operate_admins
 
