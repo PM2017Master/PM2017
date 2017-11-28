@@ -47,7 +47,7 @@ end
   get 'student_lectures' => 'student_lectures#new'
   resources :student_lectures,only: [:new, :create]
 
-
+  
   root 'welcom#home'
 
 
@@ -58,5 +58,8 @@ end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   get 'login' => 'welcom#home'
+
+  get "system_emails" => "system_emails#sendmail" 
+
 end
   
