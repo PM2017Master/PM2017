@@ -8,16 +8,10 @@ Rails.application.routes.draw do
       #admins
     } 
   
-  #devise_for :admins
-  #as :admin do
-    #get 'admins/edit' => 'admins/registrations#edit', :as => 'edit_admin_registration'
-    #put 'admins' => 'admins/registrations#update', :as => 'admin_registration'
-  #end
   devise_scope :admin do
     get 'admins/edit' => 'admins/registrations#edit', :as => 'edit_admin_registration'
     put 'admins' => 'admins/registrations#update', :as => 'admin_registration'
- 
-end
+  end
   resources :admin_homes, only: [:index]
   #resources
   #admin
