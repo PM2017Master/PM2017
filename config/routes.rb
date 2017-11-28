@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :admins
   as :admin do
+    root to: "admin_homes#index"
     get 'admins/edit' => 'devise/registrations#edit', :as => 'edit_admin_registration'
     put 'admins' => 'devise/registrations#update', :as => 'admin_registration'
   end
