@@ -59,7 +59,7 @@ end
 
   get 'login' => 'welcom#home'
 
-  get "system_calendars" => "system_calendars#sendcalendar"
+  get "system_calendars" => "system_calendars#calendar"
   get "system_emails" => "system_emails#sendmail_lecture"
   get "system_emails" => "system_emails#sendmail_report"
 
