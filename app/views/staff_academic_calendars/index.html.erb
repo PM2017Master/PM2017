@@ -1,5 +1,23 @@
-<h1>学年暦一覧表示</h1>
-<%if @calendars.nil?%>
-<%else%>
-<h1>ここに学年暦一覧が表示されます。</h1>
+<% if flash[:notice].present?%>
+<div class="alert alert-success" role="alert"><%= flash[:notice] %></div>
+<% elsif flash[:alert].present?%>
+<div class="alert alert-danger" role="alert"><%= flash[:alert] %></div>
 <%end%>
+<h1>学年暦一覧表示</h1>
+<table class='table'>
+  <thead class="thead-inverse">
+    <tr>
+      <th>日付</th>
+      <th>日付名</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @calendars.each do |calendar| %>
+   <tr>
+     <td><%= calendar.no_lecture_date %></td>
+     <td><%= calendar.date_name %></td>
+     <td><%= button_to '削除',{action: :destroy,id: calendar.id},method: :delete %></td>
+   </tr>
+   <%end%>
+ </tbody>
+</table>

@@ -1,6 +1,15 @@
 <h1>学年暦新規登録</h1>
-<%=form_for @calendars,url:'staff_academic_calendars'  do |f| %>
+<% if @calendar.errors.any? %>
+<div id="error_explanation">
+<% @calendar.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+</div>
+<%end%>
+
+<%=form_for @calendar,url:'/staff_academic_calendars'  do |f| %>
   日付:<%= f.text_field :no_lecture_date,id: 'datepicker' %>
+  日付名:<%= f.text_field :date_name %>
   <%= f.submit '送信' %>
 <%end%>
 
