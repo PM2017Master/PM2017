@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PMapp</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <% if flash[:notice].present?%>
+    <div class="alert alert-success" role="alert"><%= flash[:notice] %></div>
+    <% elsif flash[:alert].present?%>
+    <div class="alert alert-danger" role="alert"><%= flash[:alert] %></div>
+    <%end%>
+    <%= yield %>
+  </body>
+</html>
