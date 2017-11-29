@@ -1,6 +1,7 @@
 class Lecture < ApplicationRecord
     require 'csv'
 
+    #リレーション
     has_many :student_lectures, dependent: :destroy
     has_many :students, through: :student_lectures
 
@@ -11,14 +12,36 @@ class Lecture < ApplicationRecord
     has_many :supplement_lectures, through: :teacher_lectures
     has_many :reports, through: :teacher_lectures
 
-    def self.import(file)
-      CSV.foreach(file.path, headers: true) do |row|
+    #バリデーション
+    validates :year, numericality: true, length: { is: 4 } #数字4文字のみ
+    validates :day, inclusion: { in: %w(月 火 水 木 金) }, length: { is: 1 } #曜日バリデーション
+    validates :period, numericality: true, length: { is: 1 } #数字一文字
+    validates :is_intensive, inclusion: { in: [true, false,TRUE,FALSE] } #bool値のみ
+    validates :semester, inclusion: { in: %w(前期 後期) }, length: { is: 2 } #学期バリデーション
 
+    def self.import(file)
+      if File.extname(file.original_filename) == '.csv'
+      #　すでにデータが存在する場合は全て削除して更新
+      begin
+      ActiveRecord::Base.transaction do
+      present_lecture = all
+      delete_all_lectures(present_lecture) if present_lecture.count > 0
+      CSV.foreach(file.path, headers: true, encoding: 'Shift_JIS:UTF-8') do |row|
         obj = new
         obj.attributes = row.to_hash.slice(*updatable_attributes)
-
         obj.save!
       end
+      end
+      logger.debug 'ファイルのアップロードに成功しました。'
+      #end of transaction
+      rescue ActiveRecord::RecordInvalid
+        logger.debug 'トランザクションエラーです。'
+        redirect_to new_staff_operate_lecture_path
+      end
+      else
+        logger.debug '不正なファイルです。'
+      end
+
     end
 
     #登録可能なデータをバリデーション
@@ -58,4 +81,12 @@ class Lecture < ApplicationRecord
       end
     end
   end
+
+  private
+  def self.delete_all_lectures(lectures)
+    lectures.each do |lecture|
+      lecture.delete
+    end
+  end
+
 end

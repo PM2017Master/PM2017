@@ -11,7 +11,7 @@ class StaffOperateLecturesController < StaffBaseController
   #講義登録
   def create
     Lecture.import params[:file] #csv import実装
-    redirect_to new_staff_operate_lecture_path
+    redirect_to staff_operate_lectures_path,:notice => '講義の登録に成功しました。'
   end
 
   #講義検索
