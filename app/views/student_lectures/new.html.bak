@@ -4,7 +4,7 @@
 		一般講義登録：
 		<div class="row">
 			エクセルファイルのダウンロード：
-			<button type="button" class="btn btn-default">ダウンロード</button>
+			<%= button_to "ダウンロード", {controller: 'student_lectures', action: 'download_excel'}, {class: "btn btn-default"} %>
 		</div>
 		<div class="row">
 		    <form class="form-inline">
@@ -15,12 +15,8 @@
 			<button type="button" class="btn btn-default">ファイル選択</button>
 		</div>
 		<div class="row">
-			<div class="col-md-6">
-			</div>
-			<div class="col-md-6">
-				<button type="button" class="btn btn-default">アップロード</button>
-				<button type="button" class="btn btn-default" onClick="location.href='student_homes'">戻る</button>
-			</div>
+			<button type="button" class="btn btn-default">アップロード</button>
+			<%= button_to "戻る", {controller: 'student_homes', action: 'index'}, {method: :get, class: "btn btn-default"}%>
 		</div>
 	</div>
 </p>

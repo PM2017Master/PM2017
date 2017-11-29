@@ -13,8 +13,10 @@ Admin.find_or_create_by(id: 1) do |user|
   end
 
 #学生
-#教員
 Student.create(email: "pmstudent2017@outlook.com")
+Student.create(email: "pmstudent1@outlook.com")
+Student.create(email: "pmstudent2@outlook.com")
+Student.create(email: "pmstudent3@outlook.com")
 
 #教員
 Teacher.create(email: "pmteacher2017@outlook.com", name:"上田賀一")
@@ -63,6 +65,24 @@ TeacherLecture.create(
 )
 TeacherLecture.create(
     teacher_id: Teacher.find_by(name: "上田賀一").id, 
+    lecture_id: Lecture.find_by(name: "プロジェクトマネジメント論").id
+)
+
+#履修講義
+StudentLecture.create(
+    student_id: Student.find_by(email: "pmstudent2017@outlook.com").id, 
+    lecture_id: Lecture.find_by(name: "プロジェクトマネジメント論").id
+)
+StudentLecture.create(
+    student_id: Student.find_by(email: "pmstudent1@outlook.com").id, 
+    lecture_id: Lecture.find_by(name: "プロジェクトマネジメント論").id
+)
+StudentLecture.create(
+    student_id: Student.find_by(email: "pmstudent2@outlook.com").id, 
+    lecture_id: Lecture.find_by(name: "プロジェクトマネジメント論").id
+)
+StudentLecture.create(
+    student_id: Student.find_by(email: "pmstudent3@outlook.com").id, 
     lecture_id: Lecture.find_by(name: "プロジェクトマネジメント論").id
 )
 
