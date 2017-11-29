@@ -1,6 +1,0 @@
-class StudentHomeController < StudentBaseController
-
-  def index
-  end
-    
-end
