@@ -44,7 +44,7 @@ end
   resources :student_homes,only: [:index]
 
   resources :student_intensive_lectures,only: [:index, :new, :create, :destroy]
-  get 'student_lectures' => 'student_lectures#new'
+  get 'student_lectures/download_excel' => 'student_lectures#download_excel'
   resources :student_lectures,only: [:new, :create]
 
   
@@ -56,8 +56,6 @@ end
   get 'staff_homes/index'
   get 'teacher_homes/index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
-  get 'login' => 'welcom#home'
 
   get "system_calendars" => "system_calendars#sendcalendar"
   get "system_emails" => "system_emails#sendmail_lecture"
