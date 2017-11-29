@@ -53,4 +53,3 @@ end
 
   get 'login' => 'welcom#home'
 end
-  
