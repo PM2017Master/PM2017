@@ -1,16 +1,18 @@
 <h1>事務員一覧</h1>
-<table>
-    <thead>
+<table class="table table-bordered">
+    <thead class="thead-light">
         <tr>
             <th>メールアドレス</th>
+            <th>削除</th>
         </tr>
     </thead>
     <tbody>
         <% @staffs.each do |s| %>
         <tr>
             <td><%= s.email %></td>
-            <td><%= link_to 'Destroy', admin_operate_staff_path(s.id), method: :delete, data: {confirm: "Are you sure?"}%></td>
+            <td><%= link_to 'Destroy', admin_operate_staff_path(s.id), method: :delete, class: "btn btn-danger", data: {confirm: "Are you sure?"}%></td>
         </tr>
         <% end %>
     </tbody>
 </table>
+<%= link_to "戻る", :back, class: "btn btn-outline-secondary"%>

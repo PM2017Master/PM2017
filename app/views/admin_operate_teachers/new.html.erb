@@ -19,8 +19,14 @@
         <%= f.text_field :name %>
     </div>
 
+    <br />
     <div>
-        <%= f.submit%>
+        <%= f.submit "OK", class: "btn btn-outline-secondary", data: {confirm: "登録しますか?"}%>
+    </div>
+
+    <br />
+    <div>
+        <%= link_to "戻る", :back, class: "btn btn-outline-secondary"%>
     </div>
 
 <% end %>

@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   #admin
   resources :admin_operate_staffs, only: [:index, :new, :create, :destroy]
 
-  resources :admin_operate_teachers,only: [:index, :new, :edit, :create, :destroy]
+  resources :admin_operate_teachers
 
   resources :admin_operate_admins
 

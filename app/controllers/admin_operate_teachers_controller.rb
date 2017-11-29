@@ -26,7 +26,7 @@ class AdminOperateTeachersController < AdminBaseController
       end
       render :new
     elsif @teacher.save
-      redirect_to controller: :admin_operate_teachers, action: :show, id: @teacher
+      redirect_to controller: :admin_operate_teachers, action: :show, id: @teacher.id
     else
       render :new
     end
