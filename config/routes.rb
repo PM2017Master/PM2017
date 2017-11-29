@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
 
-  devise_for :admins
-  as :admin do
-    #root to: "admin_homes#index"
-    get 'admins/edit' => 'devise/registrations#edit', :as => 'edit_admin_registration'
-    put 'admins' => 'devise/registrations#update', :as => 'admin_registration'
+  devise_for :admins , :controllers => {
+    #as :admin do
+      :sessions      => "admins/sessions",
+      :registrations => "admins/registrations",
+      :passwords     => "admins/passwords",
+      #admins
+    } 
+  
+  devise_scope :admin do
+    get 'admins/edit' => 'admins/registrations#edit', :as => 'edit_admin_registration'
+    put 'admins' => 'admins/registrations#update', :as => 'admin_registration'
   end
   resources :admin_homes, only: [:index]
   #resources
@@ -41,7 +47,7 @@ end
   get 'student_lectures' => 'student_lectures#new'
   resources :student_lectures,only: [:new, :create]
 
-
+  
   root 'welcom#home'
 
 
@@ -52,4 +58,9 @@ end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   get 'login' => 'welcom#home'
+
+  get "system_calendars" => "system_calendars#sendcalendar"
+  get "system_emails" => "system_emails#sendmail_lecture"
+  get "system_emails" => "system_emails#sendmail_report"
+
 end
