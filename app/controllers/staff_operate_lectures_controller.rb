@@ -22,6 +22,15 @@ class StaffOperateLecturesController < StaffBaseController
 
   #講義バックアップ
   def backup
+
+  end
+
+  def download
+    generated_csv = Lecture.download
+    send_data generated_csv.encode(Encoding::CP932, invalid: :replace, undef: :replace),
+      filename: 'backup' + Time.now.to_s + '.csv',
+      type: 'text/csv; charset=shift_jis'
+      flash.now[:notice] = 'csvファイルのダウンロードが成功しました。'
   end
 
 end

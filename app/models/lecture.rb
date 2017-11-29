@@ -1,4 +1,6 @@
 class Lecture < ApplicationRecord
+    require 'csv'
+
     has_many :student_lectures, dependent: :destroy
     has_many :students, through: :student_lectures
 
@@ -39,6 +41,21 @@ class Lecture < ApplicationRecord
         end
       else
         Lecture.all
+    end
+  end
+
+  # 講義情報ダウンロードボタン押下時に呼び出される
+  def self.download
+    @lectures = all
+
+    header = ['シラバスコード', '講義名', '学期', '開講年', '集中フラグ', '曜日','時限','学部','学科']
+    generated_csv = CSV.generate(row_sep: "\r\n") do |csv|
+      csv << header
+      @lectures.each do |lecture|
+        csv << [lecture.syllabus_code, lecture.name, lecture.semester,
+                lecture.year, lecture.is_intensive, lecture.day, lecture.period,
+                lecture.faculty, lecture.department]
+      end
     end
   end
 end

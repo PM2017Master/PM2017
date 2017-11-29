@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(version: 20171129042354) do
     t.string "email", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "azure_token"
     t.index ["email"], name: "index_students_on_email", unique: true
   end
 
