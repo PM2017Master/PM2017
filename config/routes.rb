@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   devise_scope :admin do
     get 'admins/edit' => 'admins/registrations#edit', :as => 'edit_admin_registration'
     put 'admins' => 'admins/registrations#update', :as => 'admin_registration'
+    get '/admins/sign_out' => 'devise/sessions#destroy'
   end
   resources :admin_homes, only: [:index]
   #resources
