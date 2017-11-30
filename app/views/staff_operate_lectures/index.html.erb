@@ -1,17 +1,21 @@
 <h1>講義一覧と検索</h1>
 <div class="search">
 <%= form_tag search_staff_operate_lectures_path,method: :get do %>
-  学部:<%= select_tag :faculty,options_for_select(FACULTY), :include_blank => true  %>
-  学科:<%= select_tag :department,options_for_select(DEPARTMENT), :include_blank => true   %>
+  学部:<%= select_tag :faculty,options_for_select(FACULTY,:selected => params[:faculty]), prompt: '選択してください。' %>
+  学科:<%= select_tag :department,options_for_select(DEPARTMENT,:selected => params[:department]), prompt: '選択してください。' %>
   検索ワード:<%= text_field_tag :search,params[:search] %>
   <%= submit_tag "Go!" %>
 <%end%>
 </div>
 <!--/検索窓-->
+<%if @lectures.count == 0 %>
+  <h1>該当する講義が見つかりませんでした。</h1>
+<%else%>
 <table class='table'>
   <thead class="thead-inverse">
     <tr>
       <th>講義名</th>
+      <th>講義タイプ</th>
       <th>教員名</th>
       <th>曜日</th>
       <th>限</th>
@@ -21,6 +25,7 @@
     <% @lectures.each do |lecture|%>
    <tr>
      <td><%= lecture.name %></td>
+     <td><%= convert_intensive_tag lecture.is_intensive %></td>
      <td>
        <% lecture.teachers.each do |a| %>
          <%= a.name%>
@@ -30,5 +35,7 @@
      <td><%= lecture.period %></td>
    </tr>
    <%end%>
+   <%end%>
  </tbody>
 </table>
+<%= paginate @lectures %>

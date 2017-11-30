@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   collection do
     get :search
     get :backup
+    post :download
   end
 end
 
