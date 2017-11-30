@@ -10,18 +10,24 @@
 <% end%>
 
 <% if Staff.count > 0 %>
-    <div>
-        既に事務員は登録されています
-    </div>
+    <p>
+        既に事務員は登録されているため新たに登録することができませんでした。<br />
+        ※新たに登録する場合既に登録されている事務員を削除してから行ってください。
+    </p>
 <% else %>
     <div>
         <%= f.label "メールアドレス" %><br />
         <%= f.text_field :email %>
     </div>
 
+    <br />
     <div>
-        <%= f.submit%>
+            <%= f.submit "OK", class: "btn btn-outline-secondary", data: {confirm: "登録しますか?"}%>
     </div>
 <% end %>
+<br />
+<div>
+    <%= link_to "戻る", :back, class: "btn btn-outline-secondary"%>
+</div>
 
 <% end %>

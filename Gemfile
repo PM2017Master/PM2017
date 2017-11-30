@@ -11,6 +11,14 @@ gem 'kaminari'
 
 gem 'devise'
 
+# エラーメッセージの日本語化
+gem 'rails-i18n', '~> 5.0.0' # For 5.0.x and 5.1.x
+
+# Use jquery as the JavaScript library
+gem 'jquery-rails'
+# Use jquery-UI as the JavaScript library
+gem 'jquery-ui-rails'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.3'
 # Use sqlite3 as the database for Active Record

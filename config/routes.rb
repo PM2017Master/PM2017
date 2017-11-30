@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   collection do
     get :search
     get :backup
+    post :download
   end
 end
 
@@ -45,7 +46,7 @@ end
   resources :student_homes,only: [:index]
 
   resources :student_intensive_lectures,only: [:index, :new, :create, :destroy]
-  get 'student_lectures' => 'student_lectures#new'
+  get 'student_lectures/download_excel' => 'student_lectures#download_excel'
   resources :student_lectures,only: [:new, :create]
 
   
@@ -65,4 +66,3 @@ end
   get "system_emails" => "system_emails#sendmail_report"
 
 end
-  

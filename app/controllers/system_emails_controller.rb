@@ -6,17 +6,23 @@ class SystemEmailsController < SystemBaseController
         lecture = "プロジェクトマネジメント論"
         date = "2017年11月28日"
         period = "2限"
-
-        @mail = SendEmailMailer.lecture_date(event,lecture,date,period,"pmstudent2017@outlook.com").deliver_now
+        students = Lecture.find_by(name: lecture).students
+        students.each do |s|
+            SendEmailMailer.lecture_date(event,lecture,date,period,s.email).deliver_now
+        end
         render plain: "メール送信済み。"
-    end
     
+    end
+
     def sendmail_report
         reportname = "第１回レポート"
         lecture = "画像処理"
         date = "2017年11月28日"
         content = "難しいよ！！"
-        @mail = SendEmailMailer.report(reportname,lecture,date,content,"pmstudent2017@outlook.com").deliver_now
+        students = Lecture.find_by(name: lecture).students
+        students.each do |s|
+            SendEmailMailer.report(reportname,lecture,date,content,s.email).deliver_now
+        end
         render plain: "メール送信済み。"
     end
     

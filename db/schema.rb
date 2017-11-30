@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171127113338) do
+ActiveRecord::Schema.define(version: 20171129042354) do
 
   create_table "academic_calendars", force: :cascade do |t|
     t.date "no_lecture_date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "date_name"
   end
 
   create_table "admins", force: :cascade do |t|
@@ -104,6 +105,7 @@ ActiveRecord::Schema.define(version: 20171127113338) do
     t.string "email", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "azure_token"
     t.index ["email"], name: "index_students_on_email", unique: true
   end
 
