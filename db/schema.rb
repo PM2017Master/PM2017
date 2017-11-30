@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171129042354) do
+ActiveRecord::Schema.define(version: 20171130035717) do
 
   create_table "academic_calendars", force: :cascade do |t|
     t.date "no_lecture_date", null: false
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20171129042354) do
     t.string "department"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "teacher_name"
     t.index ["syllabus_code"], name: "index_lectures_on_syllabus_code", unique: true
   end
 

@@ -40,13 +40,14 @@ class Lecture < ApplicationRecord
       end
       else
         logger.debug '不正なファイルです。'
+        false
       end
 
     end
 
     #登録可能なデータをバリデーション
     def self.updatable_attributes
-      ["syllabus_code","name","semester","year","is_intensive","day","period","faculty","department"]
+      ["syllabus_code","name","semester","year","is_intensive","day","period","faculty","department","teacher_name"]
     end
 
     def self.search params
@@ -71,13 +72,13 @@ class Lecture < ApplicationRecord
   def self.download
     @lectures = all
 
-    header = ['シラバスコード', '講義名', '学期', '開講年', '集中フラグ', '曜日','時限','学部','学科']
+    header = ['syllabus_code', 'name',	'semester',	'year',	'is_intensive',	'day',	'period',	'faculty',	'department',	'teacher_name']
     generated_csv = CSV.generate(row_sep: "\r\n") do |csv|
       csv << header
       @lectures.each do |lecture|
         csv << [lecture.syllabus_code, lecture.name, lecture.semester,
                 lecture.year, lecture.is_intensive, lecture.day, lecture.period,
-                lecture.faculty, lecture.department]
+                lecture.faculty, lecture.department,lecture.teacher_name]
       end
     end
   end
