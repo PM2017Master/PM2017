@@ -1,3 +1,4 @@
+<div id = 'contents'>
 <h1>学年暦新規登録</h1>
 <% if @calendar.errors.any? %>
 <div id="error_explanation">
@@ -12,15 +13,12 @@
   日付名:<%= f.text_field :date_name %>
   <%= f.submit '送信' %>
 <%end%>
+</div>
+<!--end of contents-->
 
 <script type = 'text/javascript'>
-$(document).ready(function() {
-    var dateFormat = 'yy-mm-dd'
-  $("#datepicker").datepicker();
-});
-</script>
+	$("#datepicker").datepicker({
+    minDate: 0
+  });
 
-<p>Hello World!</p>
-<script type="text/javascript">
-$("p").css("color", "red");
 </script>
