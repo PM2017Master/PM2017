@@ -14,9 +14,9 @@ class Lecture < ApplicationRecord
 
     #バリデーション
     validates :year, numericality: true, length: { is: 4 } #数字4文字のみ
-    validates :day, inclusion: { in: %w(月 火 水 木 金) }, length: { is: 1 } #曜日バリデーション
-    validates :period, numericality: true, length: { is: 1 } #数字一文字
-    validates :is_intensive, inclusion: { in: [true, false,TRUE,FALSE] } #bool値のみ
+    validates :day, inclusion: { in: ['月', '火', '水', '木', '金',nil] }, length: { maximum: 1 } #曜日バリデーション
+    validates :period, length: { maximum: 1 } #数字一文字
+    validates :is_intensive, inclusion: { in: [true, false,TRUE,FALSE,nil] } #bool値のみ
     validates :semester, inclusion: { in: %w(前期 後期) }, length: { is: 2 } #学期バリデーション
 
     def self.import(file)
