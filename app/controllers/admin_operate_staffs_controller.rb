@@ -11,7 +11,7 @@ class AdminOperateStaffsController < AdminBaseController
   def create
     @staff = Staff.new(staff_params)
     if @staff.email.blank? #空
-      @staff.errors[:email] << 'メールアドレスを入力してください'
+      @staff.errors[:email] << 'を入力してください'
       render :new
     elsif @staff.save
       redirect_to controller: :admin_operate_staffs, action: :index
