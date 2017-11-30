@@ -1,4 +1,6 @@
-<h1>講義一覧と検索</h1>
+<div id = 'staff'>
+  <div id = 'contents'>
+<h3>講義一覧:</h3>
 <div class="search">
 <%= form_tag search_staff_operate_lectures_path,method: :get do %>
   学部:<%= select_tag :faculty,options_for_select(FACULTY,:selected => params[:faculty]), prompt: '選択してください。' %>
@@ -8,11 +10,13 @@
 <%end%>
 </div>
 <!--/検索窓-->
+<div class = 'margin_area'>
+  <div class = 'form_area'>
 <%if @lectures.count == 0 %>
   <h1>該当する講義が見つかりませんでした。</h1>
 <%else%>
-<table class='table'>
-  <thead class="thead-inverse">
+<table class='table table-hover'>
+  <thead class="thead">
     <tr>
       <th>講義名</th>
       <th>講義タイプ</th>
@@ -38,4 +42,10 @@
    <%end%>
  </tbody>
 </table>
-<%= paginate @lectures %>
+<div class = 'pagenate_area'><%= paginate @lectures %></div>
+</div>
+<!--end of form_area-->
+</div>
+</div>
+</div>
+<!--end of staff-->

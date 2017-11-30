@@ -1,5 +1,8 @@
+<div id = 'staff'>
 <div id = 'contents'>
-<h1>学年暦新規登録</h1>
+  <h3>学年暦登録:</h3>
+<div class = 'margin_area'>
+  <div class = 'form_area'>
 <% if @calendar.errors.any? %>
 <div id="error_explanation">
 <% @calendar.errors.full_messages.each do |msg| %>
@@ -9,12 +12,17 @@
 <%end%>
 
 <%=form_for @calendar,url:'/staff_academic_calendars'  do |f| %>
-  日付:<%= f.text_field :no_lecture_date,id: 'datepicker' %>
-  日付名:<%= f.text_field :date_name %>
-  <%= f.submit '送信' %>
+  <p>日付:<%= f.text_field :no_lecture_date,id: 'datepicker' %></p>
+  <p>日付名:<%= f.text_field :date_name %></p>
+</div>
+</div>
+<div class = 'submit'><%= f.submit 'OK' ,class: 'btn btn-primary', role:'button'%></div>
 <%end%>
 </div>
 <!--end of contents-->
+</div>
+<!--end of staff-->
+
 
 <script type = 'text/javascript'>
 	$("#datepicker").datepicker({

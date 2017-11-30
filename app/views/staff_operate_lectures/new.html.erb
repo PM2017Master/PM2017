@@ -1,5 +1,15 @@
-<h1>講義一括登録</h1>
+<div id = 'staff'>
+<div id = 'contents'>
+  <h3>講義登録:</h3>
+<div class = 'margin_area'>
+  <div class = 'form_area'>
 <%= form_tag({controller: "staff_operate_lectures", action: "create", method: "post"}, {multipart: true}) do %>
-  <div><%= file_field_tag :file %></div>
-  <%= submit_tag "アップロード", data: { confirm: "講義を登録してもよろしいですか？"} %>
+  <p><%= file_field_tag :file %></p>
+</div>
+</div>
+  <div class = 'submit'>
+    <%= submit_tag "アップロード",class: 'btn btn-primary', role:'button',data: { confirm: "講義を登録してもよろしいですか？"} %>
+  </div>
 <% end %>
+</div>
+</div>
