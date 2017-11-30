@@ -19,7 +19,6 @@
   <thead class="thead">
     <tr>
       <th>講義名</th>
-      <th>講義タイプ</th>
       <th>教員名</th>
       <th>曜日</th>
       <th>限</th>
@@ -29,7 +28,6 @@
     <% @lectures.each do |lecture|%>
    <tr>
      <td><%= lecture.name %></td>
-     <td><%= convert_intensive_tag lecture.is_intensive %></td>
      <td>
        <% lecture.teachers.each do |a| %>
          <%= a.name%>
