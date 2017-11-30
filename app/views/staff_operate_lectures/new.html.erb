@@ -8,7 +8,7 @@
 </div>
 </div>
   <div class = 'submit'>
-    <%= submit_tag "アップロード",class: 'btn btn-primary', role:'button',data: { confirm: "講義を登録してもよろしいですか？"} %>
+    <%= submit_tag "アップロード",class: 'btn btn-primary', role:'button', :onclick => "return confirm('講義を登録してもよろしいですか？')" %>
   </div>
 <% end %>
 </div>
