@@ -15,5 +15,8 @@
     <div class="alert alert-danger" role="alert"><%= flash[:alert] %></div>
     <%end%>
     <%= yield %>
+    <% if is_need_backpath? %>
+      <%= link_to '事務員ホームへ戻る', staff_homes_path %>
+    <%end%>
   </body>
 </html>

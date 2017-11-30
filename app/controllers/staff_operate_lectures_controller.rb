@@ -1,7 +1,7 @@
 class StaffOperateLecturesController < StaffBaseController
   #講義一覧表示画面
   def index
-      @lectures = Lecture.all
+      @lectures = Lecture.page(params[:page])
   end
 
   #講義追加画面
@@ -16,7 +16,7 @@ class StaffOperateLecturesController < StaffBaseController
 
   #講義検索
   def search
-    @lectures = Lecture.search(params)
+    @lectures = Lecture.search(params).page(params[:page])
     render 'index'
   end
 
