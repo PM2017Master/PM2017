@@ -1,6 +1,7 @@
 <h2>ログイン</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
   <div class="field">
     メールアドレス<!--<%= f.label :email %>--><br />
     <%= f.email_field :email, autofocus: true %>
@@ -18,9 +19,13 @@
     </div>
   <% end -%>
 
-  <div class="actions">
-    <%= f.submit "ログイン", class: "btn btn-outline-secondary" %>
+  <div class="form-inline">
+    <div>
+        <%= f.submit "ログイン", class: "btn btn-outline-secondary" %>
+    </div>
+    <div style="padding-left:50px">
+        <%= link_to "戻る", root_path, class: "btn btn-outline-secondary"%>
+    </div>
   </div>
 <% end %>
 
-<%= render "admins/shared/links" %>

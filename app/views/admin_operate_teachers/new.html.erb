@@ -4,7 +4,7 @@
     <% if @teacher.errors.any? %>
     <div>
         <% @teacher.errors.full_messages.each do |msg| %>
-            <p><%= msg %></p>
+            <li><%= msg %></li>
         <% end %>
     </div>
     <% end%>
@@ -20,13 +20,12 @@
     </div>
 
     <br />
-    <div>
-        <%= f.submit "OK", class: "btn btn-outline-secondary", data: {confirm: "登録しますか?"}%>
+    <div class="form-inline">
+        <div>
+            <%= f.submit "OK", class: "btn btn-outline-secondary"%>
+        </div>
+        <div style="padding-left:50px">
+            <%= link_to "戻る", admin_homes_path, class: "btn btn-outline-secondary"%>        
+        </div>
     </div>
-
-    <br />
-    <div>
-        <%= link_to "戻る", :back, class: "btn btn-outline-secondary"%>
-    </div>
-
 <% end %>

@@ -10,7 +10,7 @@
         <% @staffs.each do |s| %>
         <tr>
             <td><%= s.email %></td>
-            <td><%= link_to 'Destroy', admin_operate_staff_path(s.id), method: :delete, class: "btn btn-danger", data: {confirm: "Are you sure?"}%></td>
+            <td><%= link_to '削除', admin_operate_staff_path(s.id), method: :delete, class: "btn btn-danger"%></td>
         </tr>
         <% end %>
     </tbody>

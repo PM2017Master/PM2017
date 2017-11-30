@@ -3,10 +3,10 @@
 <%= form_for(resource, as: resource_name, url: admin_registration_path, html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div class="field">
-    メールアドレス<br /><!--<%= f.label :email %><br />-->
+  <!-- <div class="field">
+    メールアドレス<br />
     <%= f.email_field :email, autofocus: true %>
-  </div>
+  </div> -->
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
@@ -32,9 +32,14 @@
   </div>
 
 
-
-  <div class="actions">
-    <%= f.submit "パスワード変更" %>
+  <br />
+  <div class="form-inline">
+    <div class="actions">
+      <%= f.submit "パスワード変更", class: "btn btn-outline-secondary"%>
+    </div>
+    <div style="padding-left:50px">
+        <%= link_to "戻る", admin_homes_path, class: "btn btn-outline-secondary"%>
+    </div>
   </div>
 <% end %>
 
