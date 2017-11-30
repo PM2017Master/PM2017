@@ -11,6 +11,13 @@ class StaffOperateLecturesController < StaffBaseController
   #講義登録
   def create
     Lecture.import params[:file] #csv import実装
+    lectures = Lecture.all
+    lectures.each do |lecture|
+      if Teacher.exists?(:name => lecture.teacher_name )
+        t_id = Teacher.find_by(:name => lecture.teacher_name).id
+        TeacherLecture.create(teacher_id: t_id,lecture_id:lecture.id)
+      end
+    end
     redirect_to staff_operate_lectures_path,:notice => '講義の登録に成功しました。'
   end
 

@@ -46,7 +46,7 @@ class Lecture < ApplicationRecord
 
     #登録可能なデータをバリデーション
     def self.updatable_attributes
-      ["syllabus_code","name","semester","year","is_intensive","day","period","faculty","department"]
+      ["syllabus_code","name","semester","year","is_intensive","day","period","faculty","department","teacher_name"]
     end
 
     def self.search params
