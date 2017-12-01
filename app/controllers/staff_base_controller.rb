@@ -1,8 +1,11 @@
 #　事務ベースコントローラ
 # その他の事務コントローラはこのコントローラを継承すること。
 class StaffBaseController < ApplicationController
-    def rogin
+  layout 'staff_base'
+  rescue_from Exception, with: :render_500
 
-    end
-    
+  def render_500
+  render template: 'errors/error_500', status: 500, layout: 'staff_base', content_type: 'text/html'
+end
+
 end

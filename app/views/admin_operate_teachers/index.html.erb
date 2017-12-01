@@ -1,9 +1,10 @@
 <h1>教員一覧</h1>
-<table>
-    <thead>
+<table class="table table-bordered">
+    <thead class="thead-light">
         <tr>
             <th>教員名</th>
             <th>メールアドレス</th>
+            <th>削除</th>
         </tr>
     </thead>
     <tbody>
@@ -11,8 +12,10 @@
         <tr>
             <td><%= t.name %></td>
             <td><%= t.email %></td>
-            <td><%= link_to 'Destroy', admin_operate_teacher_path(t.id), method: :delete, data: {confirm: "Are you sure?"}%></td>
+            <td><%= link_to 'Destroy', admin_operate_teacher_path(t.id), method: :delete, class: "btn btn-danger"%></td>
         </tr>
         <% end %>
     </tbody>
 </table>
+<br />
+<%= link_to "戻る", admin_homes_path, class: "btn btn-outline-secondary"%>

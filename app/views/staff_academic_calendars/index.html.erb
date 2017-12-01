@@ -1,9 +1,8 @@
-<% if flash[:notice].present?%>
-<div class="alert alert-success" role="alert"><%= flash[:notice] %></div>
-<% elsif flash[:alert].present?%>
-<div class="alert alert-danger" role="alert"><%= flash[:alert] %></div>
-<%end%>
+<div id = 'staff'>
+  <div id = 'contents'>
 <h1>学年暦一覧表示</h1>
+<div class = 'margin_area'>
+<div class = 'form_area'>
 <table class='table'>
   <thead class="thead-inverse">
     <tr>
@@ -21,3 +20,9 @@
    <%end%>
  </tbody>
 </table>
+</div>
+</div>
+</div>
+<!--end of contents-->
+</div>
+<!--end of staff-->

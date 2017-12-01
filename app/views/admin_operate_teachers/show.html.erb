@@ -1,7 +1,20 @@
 <h1>教員を登録しました</h1>
-<div>
+<table class="table table-bordered">
+    <tbody>
+        <tr>
+            <th>メールアドレス：</th><td><%= @teacher.email %></td>
+        </tr>
+        <tr>
+            <th>教員名：</th><td><%= @teacher.name %></td>
+        </tr>
+    </tbody>
+</table>
 
-    <p>メールアドレス：<%= @teacher.email %></p>
-    <p>教員名：<%= @teacher.name %></p></p>
+<div class="form-inline">
+    <div>
+        <%= link_to "続けて登録", new_admin_operate_teacher_path, class: "btn btn-outline-secondary"%>
+    </div>
+    <div style="padding-left:100px">
+        <%= link_to "管理者ホーム戻る", admin_homes_path, class: "btn btn-outline-secondary"%>
+    </div>
 </div>
-

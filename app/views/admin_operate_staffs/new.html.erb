@@ -3,24 +3,34 @@
 
 <% if @staff.errors.any? %>
 <div>
-    <% @staff.errors.full_messages.each do |msg| %>
-        <p><%= msg %></p>
+    <% @staff.errors.messages.values.each do |msg| %>
+        <% msg.each do |m| %>
+        <li><%= m %></li>
+        <% end %>
     <% end %>
 </div>
 <% end%>
 
 <% if Staff.count > 0 %>
-    <div>
-        既に事務員は登録されています
-    </div>
+    <p>
+        既に事務員は登録されているため新たに登録することができませんでした。<br />
+        ※新たに登録する場合既に登録されている事務員を削除してから行ってください。
+    </p>
+    <%= link_to "戻る", admin_homes_path, class: "btn btn-outline-secondary"%>
 <% else %>
     <div>
         <%= f.label "メールアドレス" %><br />
         <%= f.text_field :email %>
     </div>
 
-    <div>
-        <%= f.submit%>
+    <br />
+    <div class="form-inline">
+        <div>
+            <%= f.submit "OK", class: "btn btn-outline-secondary"%>
+        </div>
+        <div style="padding-left:50px">
+            <%= link_to "戻る", admin_homes_path, class: "btn btn-outline-secondary"%>
+        </div>
     </div>
 <% end %>
 

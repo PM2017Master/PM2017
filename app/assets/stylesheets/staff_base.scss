@@ -1,3 +1,55 @@
 // Place all the styles related to the staff_base controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#fotter p{
+margin: 15px;
+}
+
+#staff{
+  margin-top: 20px;
+}
+
+#staff #contents{
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+#staff #contents .form_area{
+  //width:50%;
+   background-color: white;
+   padding-top: 10px;
+   padding-bottom: 10px;
+  border-radius: 20px;
+ }
+
+ #staff #contents .form_area p{
+   margin: 15px;
+   text-align: center;
+ }
+
+ #staff #contents .form_area .pagenate_area{
+   margin-left: 25%;
+   margin-right: 25%;
+ }
+
+ #staff #contents .form_area .backup{
+   margin: 15px;
+   text-align: center;
+ }
+
+#staff #contents .search{
+  margin-bottom: 20px;
+}
+
+ #staff #contents .submit{
+   margin: 15px;
+   margin-left: 80%;
+   float: left;
+ }
+
+
+ #staff #contents .margin_area{
+   background-color: #A9A9A9;
+   padding: 5px;
+   //width: 100px;
+ }

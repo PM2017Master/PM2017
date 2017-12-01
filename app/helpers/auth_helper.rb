@@ -104,7 +104,9 @@ end
       # Save new token
       #session[:azure_token] = new_token.to_hash
       #user = User.find(1)
-      user.update(azure_token: new_token.to_hash)
+      student = Student.find_by(email: email)
+      student.azure_token = new_token.to_hash
+      student.save
       access_token = new_token.token
     else
       access_token = token.token
