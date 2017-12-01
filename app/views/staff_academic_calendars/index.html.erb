@@ -1,2 +1,28 @@
-<h1>StaffAcademicCalendars#index</h1>
-<p>Find me in app/views/staff_academic_calendars/index.html.erb</p>
+<div id = 'staff'>
+  <div id = 'contents'>
+<h1>学年暦一覧表示</h1>
+<div class = 'margin_area'>
+<div class = 'form_area'>
+<table class='table'>
+  <thead class="thead-inverse">
+    <tr>
+      <th>日付</th>
+      <th>日付名</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @calendars.each do |calendar| %>
+   <tr>
+     <td><%= calendar.no_lecture_date %></td>
+     <td><%= calendar.date_name %></td>
+     <td><%= button_to '削除',{action: :destroy,id: calendar.id},method: :delete %></td>
+   </tr>
+   <%end%>
+ </tbody>
+</table>
+</div>
+</div>
+</div>
+<!--end of contents-->
+</div>
+<!--end of staff-->

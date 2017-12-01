@@ -1,2 +1,32 @@
-<h1>StaffAcademicCalendars#new</h1>
-<p>Find me in app/views/staff_academic_calendars/new.html.erb</p>
+<div id = 'staff'>
+<div id = 'contents'>
+  <h3>学年暦登録:</h3>
+<div class = 'margin_area'>
+  <div class = 'form_area'>
+<% if @calendar.errors.any? %>
+<div id="error_explanation">
+<% @calendar.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+</div>
+<%end%>
+
+<%=form_for @calendar,url:'/staff_academic_calendars'  do |f| %>
+  <p>日付:<%= f.text_field :no_lecture_date,id: 'datepicker' %></p>
+  <p>日付名:<%= f.text_field :date_name %></p>
+</div>
+</div>
+<div class = 'submit'><%= f.submit 'OK', class: 'btn btn-primary', role:'button', data: { confirm: "学年暦を登録しますか？"}%></div>
+<%end%>
+</div>
+<!--end of contents-->
+</div>
+<!--end of staff-->
+
+
+<script type = 'text/javascript'>
+	$("#datepicker").datepicker({
+    minDate: 0
+  });
+
+</script>

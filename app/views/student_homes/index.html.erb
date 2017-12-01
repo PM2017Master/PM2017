@@ -84,7 +84,7 @@
 			
 			<div class="col-md-1">
 				<div class="row">
-					<button type="button" class="btn btn-default" onClick="location.href='student_lectures'">一般講義登録</button>
+					<%= button_to "一般講義登録", {controller: 'student_lectures', action: 'new'}, {method: :get, class: "btn btn-default"}%>
 					<button type="button" class="btn btn-default">集中講義登録</button>
 					<button type="button" class="btn btn-default">集中講義取り消し</button>
 				</div>
@@ -94,7 +94,7 @@
 					<br>
 					<br>
 					<br>
-					<button type="button" class="btn btn-default" onClick="location.href='login'">ログアウト</button>
+					<%= button_to "ログアウト", {controller: 'welcom', action: 'home'}, {method: :get, class: "btn btn-default"}%>
 				</div>
 			</div>
 		</div>

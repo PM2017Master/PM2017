@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PMapp</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body id = 'staff'>
+    <% if flash[:notice].present?%>
+    <div class="alert alert-success" role="alert"><%= flash[:notice] %></div>
+    <% elsif flash[:alert].present?%>
+    <div class="alert alert-danger" role="alert"><%= flash[:alert] %></div>
+    <%end%>
+    <%= yield %>
+    <div id = 'fotter'>
+    <% if is_need_backpath? %>
+      <p><%= link_to '戻る', staff_homes_path,class: 'btn btn-primary', role:'button' %></p>
+    <%end%>
+  </div>
+  </body>
+</html>
