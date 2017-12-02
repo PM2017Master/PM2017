@@ -7,12 +7,12 @@
 			<%= button_to "ダウンロード", {controller: 'student_lectures', action: 'download_excel'}, {method: :get, class: "btn btn-default"} %>
 		</div>
 		<div class="row">
-		    <form class="form-inline">
-		        <div class="form-group">
-    	       		<input type="text" name="file" class="form-control" placeholder="ファイル名">
-    	       	</div>
-    	    </form>
-			<button type="button" class="btn btn-default">ファイル選択</button>
+				<%= form_tag '/student_lectures', method: 'post', multipart: true do %>
+			    <label>エクセルファイルのアップロード：</label>
+			    <br>
+			    <%= file_field :student_lecture, :file %>
+			    <%= submit_tag 'アップロード' %>
+				<% end %>
 		</div>
 		<div class="row">
 			<button type="button" class="btn btn-default">アップロード</button>
