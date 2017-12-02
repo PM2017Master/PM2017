@@ -17,16 +17,19 @@ class AdminOperateTeachersController < AdminBaseController
   def create
     @teacher = Teacher.new(teacher_params)
 
-    if Teacher.exists?(email: @teacher.email)
-      p @teacher.email
+    if Teacher.exists?(email: @teacher.email) #既に存在
       if !@teacher.email.blank? #既に存在
-        @teacher.errors[:email] << '教員メールアドレスが既に登録されています'
-      elsif #空
-        @teacher.errors[:email] << '教員メールアドレスを入力してください'
+        @teacher.errors[:email] << 'が既に登録されています'
       end
       render :new
     elsif @teacher.save
-      redirect_to controller: :admin_operate_teachers, action: :show, id: @teacher
+      lectures = Lecture.where(teacher_name: @teacher.name) #講義を教員名で検索
+      lectures.each do |lecture|
+        if lecture.teacher_lectures.empty? #中間テーブルに存在しないなら
+          lecture.teachers << @teacher
+        end
+      end
+      redirect_to controller: :admin_operate_teachers, action: :show, id: @teacher.id
     else
       render :new
     end

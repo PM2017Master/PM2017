@@ -12,5 +12,18 @@ class StudentLecturesController < StudentBaseController
   
   #講義DBに登録
   def create
+  	uploaded_file = student_lecture_param[:file]
+  	output_path = Rails.root.join('public', uploaded_file.original_filename)
+  	
+  	File.open(output_path, 'w+b') do |fp|
+  		fp.write uploaded_file.read
+  	end
+  	
+  	redirect_to action: 'new'
+  end
+  
+  private
+  def student_lecture_param
+  	params.require(:student_lecture).permit(:file)
   end
 end
