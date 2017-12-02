@@ -1,7 +1,11 @@
 // Place all the styles related to the staff_base controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-#fotter p{
+body#staff{
+  background-color: #DCDCDC;
+}
+
+body#staff #fotter p{
 margin: 15px;
 }
 

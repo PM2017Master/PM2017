@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20171130101216) do
+=======
+ActiveRecord::Schema.define(version: 20171130035717) do
+>>>>>>> 58ce88961d629979fce94c14c616002fa412f8ff
 
   create_table "academic_calendars", force: :cascade do |t|
     t.date "no_lecture_date", null: false
@@ -56,6 +60,10 @@ ActiveRecord::Schema.define(version: 20171130101216) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "teacher_name"
+<<<<<<< HEAD
+=======
+    t.index ["syllabus_code"], name: "index_lectures_on_syllabus_code", unique: true
+>>>>>>> 58ce88961d629979fce94c14c616002fa412f8ff
   end
 
   create_table "no_lecture_dates", force: :cascade do |t|
@@ -103,6 +111,7 @@ ActiveRecord::Schema.define(version: 20171130101216) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "azure_token"
+    t.index ["email"], name: "index_students_on_email", unique: true
   end
 
   create_table "supplement_lectures", force: :cascade do |t|

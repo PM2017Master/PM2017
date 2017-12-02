@@ -8,7 +8,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body id = 'staff'>
     <% if flash[:notice].present?%>
     <div class="alert alert-success" role="alert"><%= flash[:notice] %></div>
     <% elsif flash[:alert].present?%>
