@@ -17,7 +17,7 @@ class SendEmailMailer < ApplicationMailer
     @date = date
     @period = period
     mail to: mailadd,
-      subject: '開講日通知だよ。'
+      subject: lecture+'の'+event+'のお知らせ'
   end
 
   def report(reportname,lecture,date,content,mailadd)
@@ -26,6 +26,6 @@ class SendEmailMailer < ApplicationMailer
     @date = date
     @content = content
     mail to: mailadd,
-      subject: 'レポート通知だよ'
+      subject: lecture+'の'+reportname+'のお知らせ'
   end
 end
