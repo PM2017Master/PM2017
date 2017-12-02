@@ -85,7 +85,7 @@
 			<div class="col-md-1">
 				<div class="row">
 					<%= button_to "一般講義登録", {controller: 'student_lectures', action: 'new'}, {method: :get, class: "btn btn-default"}%>
-					<button type="button" class="btn btn-default">集中講義登録</button>
+					<%= button_to "集中講義登録", {controller: 'student_intensive_lectures', action: 'index'}, {method: :get, class: "btn btn-default"}%>
 					<button type="button" class="btn btn-default">集中講義取り消し</button>
 				</div>
 				<div class="row">

@@ -1,7 +1,7 @@
 class StudentIntensiveLecturesController < StudentBaseController
   #集中講義一覧表示画面
   def index
-  	@intensive_lectures = Lecture.all#where(is_intensive: true)
+  	@intensive_lectures = Lecture.where(is_intensive: true)
   end
   
   #集中講義登録画面
