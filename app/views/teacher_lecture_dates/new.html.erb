@@ -1,2 +1,25 @@
-<h1>TeacherLectureDates#new</h1>
-<p>Find me in app/views/teacher_lecture_dates/new.html.erb</p>
+<h1>開講日変更</h1>
+<div class=container>
+  <div class="row">
+    <div class="col-md-12">
+      講義選択:
+      <div class="radio">
+        <label> </label>
+      </div>
+    </div>
+  <div class="row">
+    <div class="col-md-12">
+      開講日設定:
+      
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-9">
+      
+    </div>
+    <div class="col-md-3">
+      <%= button_to "OK" %>
+      <%= button_to "戻る", {controller: 'teacher_homes', action: 'index'}, {method: :get, class: "btn btn-default"} %>
+    </div>
+  </div>
+</div>
