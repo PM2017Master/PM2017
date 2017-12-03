@@ -1,2 +1,32 @@
-<h1>TeacherReports#new</h1>
-<p>Find me in app/views/teacher_reports/new.html.erb</p>
+<h1>レポート登録</h1>
+<div class=""container>
+  <div class="row">
+    <div class="col-md-12">
+      講義:#選択形式
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      レポート名:#テキスト形式
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      締切日時:#選択形式
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      内容:#テキスト形式
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-9">
+      
+    </div>
+    <div class="col-md-3">
+      <%= button_to "OK" %>
+      <%= button_to "戻る", {controller:'teacher_homes', action:'index'}, {method: :get, class: "btn btn-default"} %>
+    </div>
+  </div>
+</div>
