@@ -9,7 +9,7 @@ include AuthHelper
      str = @email
      check = str.include?("student")
 
-  
+
      if Staff.where(email: @email).count == 1 then
          redirect_to controller: 'staff_homes', action: 'index'
         elsif Teacher.where(email:@email).count == 1 then
@@ -33,5 +33,12 @@ include AuthHelper
 
     end
 
-  
+    # 燃費くん改修よろしく！終わったらこのメッセージ消してね！
+    #　:hogehogeに適切な変数突っ込むとセッションとcokkieに入ってるデータが破壊されるはず！(どこでsessionにデータ突っ込んでるのかとかは分からんかったからここはよろしく！)
+    def logout
+        session[:hogehoge] = nil
+        cookies.delete(:hogehoge)
+        redirect_to root_path,:notice => '正常にログアウトできました。'
+    end
+
 end
