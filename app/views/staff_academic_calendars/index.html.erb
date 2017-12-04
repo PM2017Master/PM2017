@@ -3,6 +3,9 @@
 <h1>学年暦一覧表示</h1>
 <div class = 'margin_area'>
 <div class = 'form_area'>
+  <% if @calendars.count <= 0 %>
+  <h1>学年暦が登録されていません。</h1>
+  <%else%>
 <table class='table'>
   <thead class="thead-inverse">
     <tr>
@@ -20,6 +23,7 @@
    <%end%>
  </tbody>
 </table>
+<%end%>
 </div>
 </div>
 </div>

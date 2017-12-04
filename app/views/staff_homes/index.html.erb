@@ -4,3 +4,4 @@
   <%= button_to "講義検索", {controller: 'staff_operate_lectures', action: 'index'}, {method: :get, class: "btn btn-default"}%>
   <%= button_to "学年暦登録", {controller: 'staff_academic_calendars', action: 'new'}, {method: :get, class: "btn btn-default"}%>
   <%= button_to "学年暦表示・削除", {controller: 'staff_academic_calendars', action: 'index'}, {method: :get, class: "btn btn-default"}%>
+<%= button_to "ログアウト", {controller: 'auth', action: 'logout'}, {method: :get, class: "btn btn-default"}%>

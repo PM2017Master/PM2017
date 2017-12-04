@@ -1,18 +1,17 @@
-<h1>TeacherHomes#index</h1>
-<p>Find me in app/views/teacher_homes/index.html.erb</p>
+<h1>教員機能一覧</h1>
 <div class="container">
   <div class="row">
-    <div class="col-xs-6">
+    <div class="col-md-6">
       担当講義:
     </div>
-    <div class="col-xs-6">
+    <div class="col-md-6">
       <%= button_to "開講日変更", {controller: 'teacher_lecture_dates', action: 'new'}, {method: :get, class: "btn btn-default"} %>
       <%= button_to "レポート設定", {controller: 'teacher_reports', action: 'new'}, {method: :get, class: "btn btn-default"} %>
       <%= button_to "レポート表示・削除", {controller: 'teacher_reports', action: 'index'}, {method: :get, class: "btn btn-default"} %>
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-md-12">
       登録開講日:
     </div>
   </div>

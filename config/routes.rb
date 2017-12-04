@@ -54,11 +54,12 @@ end
 
 
   get 'authorize' => 'auth#gettoken'
+  get 'authlogout' => 'auth#logout'
   get 'student_homes/index'
   get 'staff_homes/index'
   get 'teacher_homes/index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  
+
 
   get "system_calendars" => "system_calendars#calendar"
 
