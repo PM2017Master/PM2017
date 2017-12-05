@@ -19,14 +19,15 @@ Student.create(email: "pmstudent2@outlook.com")
 Student.create(email: "pmstudent3@outlook.com")
 
 #教員
-Teacher.create(email: "pmteacher2017@outlook.com", name:"上田賀一")
+t1 = Teacher.create(email: "pmteacher2017@outlook.com", name:"上田賀一")
+t2 = Teacher.create(email: "pmteacher@outlook.com", name:"岡田信一郎")
 
 #事務員
-Staff.create(email: "pmstaff2017@outlook.com")
+Staff.create(email: "pmstaff2017@outlook.jp")
 
 #講義
 ##一般講義
-Lecture.create(
+l1 = Lecture.create(
     syllabus_code: "T7538",
     name: "ソフトウェア工学Ⅰ",
     semester: "前期",
@@ -34,9 +35,10 @@ Lecture.create(
     day: "火",
     period: 2,
     faculty: "工学部",
-    department: "情報工学科"
+    department: "情報工学科",
+    teacher_name: "上田賀一"
 )
-Lecture.create(
+l2 = Lecture.create(
     syllabus_code: "T7501",
     name: "プログラミング演習Ⅰ",
     semester: "前期",
@@ -44,29 +46,25 @@ Lecture.create(
     day: "水",
     period: 3,
     faculty: "工学部",
-    department: "情報工学科"
+    department: "情報工学科",
+    teacher_name: "岡田信一郎"
 )
 
 ##集中講義
-Lecture.create(
+l3 = Lecture.create(
     syllabus_code: "T7585",
     name: "プロジェクトマネジメント論",
     semester: "後期", 
     year: "2017", 
     is_intensive: true,
     faculty: "工学部",
-    department: "情報工学科"
+    department: "情報工学科",
+    teacher_name: "上田賀一"
 )
 
 #担当講義
-TeacherLecture.create(
-    teacher_id: Teacher.find_by(name: "上田賀一").id, 
-    lecture_id: Lecture.find_by(name: "ソフトウェア工学Ⅰ").id
-)
-TeacherLecture.create(
-    teacher_id: Teacher.find_by(name: "上田賀一").id, 
-    lecture_id: Lecture.find_by(name: "プロジェクトマネジメント論").id
-)
+l2.teachers << t2
+#l3.teachers << t1
 
 #履修講義
 StudentLecture.create(
@@ -87,10 +85,8 @@ StudentLecture.create(
 )
 
 #休講
-@teacher_lecture = TeacherLecture.find_by(
-    teacher_id: Teacher.find_by(name: "上田賀一").id, 
-    lecture_id: Lecture.find_by(name: "ソフトウェア工学Ⅰ").id
-)
+@teacher_lecture = TeacherLecture.find(1)
+
 CancelLecture.create(
     teacher_lecture_id: @teacher_lecture.id,
     cancel_date: Time.new(2017, 11, 30), 
