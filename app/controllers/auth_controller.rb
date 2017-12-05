@@ -38,19 +38,20 @@ include AuthHelper
 
     end
 
-    
+
     def logout
        # if session[:stff_login_flag]== nil && session[:teacher_login_flag]== nil && session[:student_login_flag] == nil
         #    redirect_to root_path,:notice => 'ログインしていません。'
 
         if session[:user_email] == nil
-            redirect_to root_path,:notice => 'ログインしていません。'   
+            redirect_to root_path,:notice => 'ログインしていません。'
         else
             session[:user_email] = nil
+            cookies[:_p_mapp_session] = nil
             redirect_to root_path,:notice => '正常にログアウトできました。'
 
         end
-        
+
     end
 
 end
