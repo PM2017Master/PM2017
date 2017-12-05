@@ -29,7 +29,7 @@ include AuthHelper
                 session[:student_login_flag] = true
                 redirect_to  controller: 'student_homes', action: 'index'
             else
-                redirect_to controller: 'welcom', action: 'home'
+                redirect_to controller: 'auth', action: 'login_error'
 
             end
 
