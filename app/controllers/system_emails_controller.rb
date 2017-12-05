@@ -6,7 +6,7 @@ class SystemEmailsController < SystemBaseController
         students.each do |s|
             SendEmailMailer.lecture_date(event,lecture,date,period,s.email).deliver_now
         end
-        render plain: "メール送信済み。"
+        #render plain: "メール送信済み。"
     
     end
 
@@ -15,7 +15,7 @@ class SystemEmailsController < SystemBaseController
         students.each do |s|
             SendEmailMailer.report(reportname,lecture,date,content,s.email).deliver_now
         end
-        render plain: "メール送信済み。"
+        #render plain: "メール送信済み。"
     end
     
 end
