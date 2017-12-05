@@ -2,7 +2,7 @@
 class StaffAcademicCalendarsController < StaffBaseController
   #学年暦一覧表示
   def index
-    @calendars = AcademicCalendar.all
+    @calendars = AcademicCalendar.page(params[:page])
   end
 
   #学年暦登録画面
