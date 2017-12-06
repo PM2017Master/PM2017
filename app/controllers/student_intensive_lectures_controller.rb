@@ -15,7 +15,7 @@
   #集中講義登録画面
   def new
 	resistLecture = StudentLecture.new
-	resistLecture.student_id = 3 #Student.find_by(email: session[:user_email]).id
+	resistLecture.student_id = Student.find_by(email: session[:user_email]).id
 	resistLecture.lecture_id = Lecture.find_by(name: params[:selected_lecture]).id
 	resistLecture.save
   end
@@ -32,15 +32,15 @@
   #講義DBから削除
   def destroy
   	resistLecture = StudentLecture.new
-	resistLecture.student_id = 3 #Student.find_by(email: session[:user_email]).id
+	resistLecture.student_id = Student.find_by(email: session[:user_email]).id
 	resistLecture.lecture_id = Lecture.find_by(name: params[:selected_lecture]).id
 	resistLecture.save
   end
   
   def deleteindex
   	intensive_lectures = Lecture.where(is_intensive: true)
-  	#student = Student.find_by(email: session[:email])
-  	student_lectures = StudentLecture.where(student_id: 3)#student.id)
+  	student = Student.find_by(email: session[:email])
+  	student_lectures = StudentLecture.where(student_id: student.id)
 	@student_intensive_lectures = []
 	
 	intensive_lectures.each do |intensive_lecture|
