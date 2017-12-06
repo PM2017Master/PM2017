@@ -3,8 +3,6 @@ class ApplicationController < ActionController::Base
   before_action :check_login?, if: :needs_check?
 
   def check_login?
-    logger.debug 'check'
-    logger.debug session[:user_email]
     if session[:user_email].nil?
       redirect_to root_path
     end
