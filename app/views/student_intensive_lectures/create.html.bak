@@ -1,6 +1,6 @@
 ﻿<h1>Student's page</h1>
 <div>
-	<% if @selected_lecture == 0 %>
+	<% if @selected_lectures == 0 %>
 	集中講義を選択してください。
 	<%= button_to "戻る", {controller: 'student_intensive_lectures', action: 'index'}, {method: :get, class: "btn btn-default"}%>
 

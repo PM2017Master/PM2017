@@ -1,39 +1,27 @@
-ï»¿<h1>Student's page</h1>
+<h1>Student's page</h1>
 <p>
 	<div class="container">
-		é›†ä¸­è¬›ç¾©æ¤œç´¢ï¼š
-		<div class="row">
-			<%= form_tag(student_intensive_lectures_path, method: :get) do %>
-			    <label>å­¦éƒ¨</label>
-				<%= text_field_tag :faculty %>
-				<label>å­¦ç§‘</label>
-				<%= text_field_tag :department %>
-				<label>æ¤œç´¢ãƒ¯ãƒ¼ãƒ‰</label>
-				<%= text_field_tag :search_word %>
-				<%= submit_tag 'æ¤œç´¢' %>
-			<% end %>
-    	</div>
     	<div class="row">
     		<div class="col-md-6">
-    			é›†ä¸­è¬›ç¾©ç™»éŒ²ï¼š
+    			W’†u‹`æ‚èÁ‚µF
     		</div>
     		<div class="col-md-6">
     			<%= form_tag(student_intensive_lectures_path, method: :post) do %>
     			<table class="table table-bordered">
 					<thead class="thead">
 				  		<tr>
-				  			<th>é¸æŠ</th>
-				    		<th>è¬›ç¾©å</th>
-				    		<th>æ•™å“¡å</th>
+				  			<th>‘I‘ğ</th>
+				    		<th>u‹`–¼</th>
+				    		<th>‹³ˆõ–¼</th>
 				  		</tr>
 					</thead>
 				 	<tbody>
 				 			<% lectureCount = 0 %>
-				    		<% @intensive_lectures.each do |lecture| %>
+				    		<% @student_intensive_lectures.each do |lecture| %>
 				    		<% lectureCount += 1 %>
 					   		<tr>
 					   			<td>
-					   				<%= radio_button_tag 'selected_lecture', value = lecture.name %>
+					   				<%= check_box_tag 'selected_lecture', value = lecture.name %>
 					   			</td>
 					     		<td>
 					     			<%= lecture.name %>
@@ -53,7 +41,7 @@
     	</div>
   			<%= submit_tag 'OK' %>
 			<% end %>
-    		<%= button_to "æˆ»ã‚‹", {controller: 'student_homes', action: 'index'}, {method: :get, class: "btn btn-default"}%>
+    		<%= button_to "–ß‚é", {controller: 'student_homes', action: 'index'}, {method: :get, class: "btn btn-default"}%>
     	</div>
 	</div>
 </p>

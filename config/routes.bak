@@ -47,7 +47,7 @@ end
 
   post 'student_intensive_lectures/new' => 'student_intensive_lectures#new'
   get 'student_intensive_lectures/deleteindex' => 'student_intensive_lectures#deleteindex'
-  post 'student_intensive_lectures/deleteconfirm' => 'student_intensive_lectures#deleteconfirm'
+  get 'student_intensive_lectures/deleteconfirm' => 'student_intensive_lectures#deleteconfirm'
   post 'student_intensive_lectures/delete' => 'student_intensive_lectures#delete'
   resources :student_intensive_lectures,only: [:index, :new, :create, :destroy]
 

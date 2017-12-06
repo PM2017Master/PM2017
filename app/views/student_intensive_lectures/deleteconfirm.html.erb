@@ -2,11 +2,11 @@
 <div>
 	<% if @selected_lecture == 0 %>
 	集中講義を選択してください。
-	<%= button_to "戻る", {controller: 'student_intensive_lectures', action: 'index'}, {method: :get, class: "btn btn-default"}%>
+	<%= button_to "戻る", {controller: 'student_intensive_lectures', action: 'deleteindex'}, {method: :get, class: "btn btn-default"}%>
 
 	<% else %>
 	
-	以下の集中講義を登録してよろしいですか？
+	以下の集中講義を削除してよろしいですか？
     <table class="table table-bordered">
 		<thead class="thead">
 	  		<tr>
@@ -27,11 +27,11 @@
 		   		</tr>
 		</tbody>
 	</table>
-	<%= form_tag("student_intensive_lectures/new", method: :post) do %>
+	<%= form_tag(student_intensive_lectures_delete_path, method: :post) do %>
 	<%= hidden_field_tag :selected_lecture, @selected_lecture %>
 	<%= submit_tag "OK" %>
 	<% end %>
 	
-	<%= button_to "キャンセル", {controller: 'student_intensive_lectures', action: 'index'}, {method: :get, class: "btn btn-default"}%>
+	<%= button_to "キャンセル", {controller: 'student_intensive_lectures', action: 'deleteindex'}, {method: :get, class: "btn btn-default"}%>
 	<% end %>
 </div>

@@ -1,24 +1,12 @@
 ﻿<h1>Student's page</h1>
 <p>
 	<div class="container">
-		集中講義検索：
-		<div class="row">
-			<%= form_tag(student_intensive_lectures_path, method: :get) do %>
-			    <label>学部</label>
-				<%= text_field_tag :faculty %>
-				<label>学科</label>
-				<%= text_field_tag :department %>
-				<label>検索ワード</label>
-				<%= text_field_tag :search_word %>
-				<%= submit_tag '検索' %>
-			<% end %>
-    	</div>
     	<div class="row">
     		<div class="col-md-6">
-    			集中講義登録：
+    			集中講義取り消し：
     		</div>
     		<div class="col-md-6">
-    			<%= form_tag(student_intensive_lectures_path, method: :post) do %>
+    			<%= form_tag(student_intensive_lectures_deleteconfirm_path, method: :post) do %>
     			<table class="table table-bordered">
 					<thead class="thead">
 				  		<tr>
@@ -29,7 +17,7 @@
 					</thead>
 				 	<tbody>
 				 			<% lectureCount = 0 %>
-				    		<% @intensive_lectures.each do |lecture| %>
+				    		<% @student_intensive_lectures.each do |lecture| %>
 				    		<% lectureCount += 1 %>
 					   		<tr>
 					   			<td>

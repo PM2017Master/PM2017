@@ -18,6 +18,7 @@
     			集中講義登録：
     		</div>
     		<div class="col-md-6">
+    			<%= form_tag(student_intensive_lectures_path, method: :post) do %>
     			<table class="table table-bordered">
 					<thead class="thead">
 				  		<tr>
@@ -32,6 +33,7 @@
 				    		<% lectureCount += 1 %>
 					   		<tr>
 					   			<td>
+					   				<%= check_box_tag 'selected_lecture', value = lecture.name %>
 					   			</td>
 					     		<td>
 					     			<%= lecture.name %>
@@ -49,7 +51,8 @@
 				</table>
     		</div>
     	</div>
-    		<%= button_to "OK", {controller: 'student_homes', action: 'index'}, {method: :get, class: "btn btn-default"}%>
+  			<%= submit_tag 'OK' %>
+			<% end %>
     		<%= button_to "戻る", {controller: 'student_homes', action: 'index'}, {method: :get, class: "btn btn-default"}%>
     	</div>
 	</div>
