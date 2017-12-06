@@ -1,5 +1,0 @@
-﻿<h1>Student's page</h1>
-<div>
-	選択された集中講義の登録が完了しました。
-	<%= button_to "OK", {controller: 'student_homes', action: 'index'}, {method: :get, class: "btn btn-default"}%>
-</div>
