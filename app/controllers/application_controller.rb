@@ -9,7 +9,8 @@ class ApplicationController < ActionController::Base
   end
 
   def needs_check?
-    if controller_name == 'welcom' || controller_name == 'admin_homes' ||controller_name == 'auth' ||controller_name == 'sessions'
+    logger.debug controller_name
+    unless controller_name.include?('staff') || controller_name.include?('teacher') || controller_name.include?('student')
       false
     else
       true
