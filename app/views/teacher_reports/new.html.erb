@@ -1,32 +1,40 @@
 <h1>レポート登録</h1>
-<div class=""container>
-  <div class="row">
-    <div class="col-md-12">
-      講義:#選択形式
+  <% if @report.errors.any? %>
+  <div id="error_explanation">
+  <% @report.errors.full_messages.each do |msg| %>
+      <ul>
+        <li><%= msg %></li>
+      </ul>
+      <% end %>
+  </div>
+  <%end%>
+<%= form_for @report, url:'teacher_reports' do |f| %>
+  <div class = 'margin_area'>
+    <div class = 'form_area'>
+      <p>講義:#選択形式
+      </p>
+
+      <p>レポート名(20文字まで):#テキスト形式
+      <%= f.text_field :title, class: 'form-control', maxlength: 20 %></p>
+
+      <p>締切日時:#選択形式
+      <%= f.date_select :deadline_date, {}, class: 'form-control' %></p>
+
+      <p>内容(200文字まで):#テキスト形式
+      <%= f.text_field :content, class: 'form-control', maxlength: 200, size: 20 %></p>
+
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-12">
-      レポート名:#テキスト形式
+
+  <div class=""container>
+    <div class="row">
+      <div class="col-md-9">
+        
+      </div>
+      <div class="col-md-3">
+        <div class = 'submit'><%= f.submit 'OK', class: 'btn btn-primary', role:'button', data: { confirm: "レポートを登録しますか？"}%></div>
+        <%= button_to "戻る", {controller:'teacher_homes', action:'index'}, {method: :get, class: "btn btn-default"} %>
+      </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-12">
-      締切日時:#選択形式
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      内容:#テキスト形式
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-9">
-      
-    </div>
-    <div class="col-md-3">
-      <%= button_to "OK" %>
-      <%= button_to "戻る", {controller:'teacher_homes', action:'index'}, {method: :get, class: "btn btn-default"} %>
-    </div>
-  </div>
-</div>
+<% end %>

@@ -86,7 +86,7 @@ class Lecture < ApplicationRecord
   private
   def self.delete_all_lectures(lectures)
     lectures.each do |lecture|
-      lecture.delete
+      lecture.destroy
     end
   end
 

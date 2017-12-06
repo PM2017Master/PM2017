@@ -60,6 +60,8 @@ end
 
   get 'authorize' => 'auth#gettoken'
   get 'authlogout' => 'auth#logout'
+  get 'auth/login_error'
+  get 'welcom/home'
   get 'student_homes/index'
   get 'staff_homes/index'
   get 'teacher_homes/index'
