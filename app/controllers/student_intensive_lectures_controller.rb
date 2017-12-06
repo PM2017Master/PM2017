@@ -24,17 +24,17 @@
   def create
   	if params[:selected_lecture]
 	  	@selected_lecture = params[:selected_lecture]
-	else
-		@selected_lecture = 0
-	end
+		else
+			@selected_lecture = 0
+		end
   end
 
   #講義DBから削除
   def destroy
   	resistLecture = StudentLecture.new
-	resistLecture.student_id = 3 #Student.find_by(email: session[:user_email]).id
-	resistLecture.lecture_id = Lecture.find_by(name: params[:selected_lecture]).id
-	resistLecture.save
+		resistLecture.student_id = 3 #Student.find_by(email: session[:user_email]).id
+		resistLecture.lecture_id = Lecture.find_by(name: params[:selected_lecture]).id
+		resistLecture.save
   end
   
   def deleteindex
@@ -65,7 +65,8 @@
   
     #講義DBから削除
   def delete
-  	deleteLecture = StudentLecture.find_by(student_id: 3,
+		#student = Student.find_by(email: session[:email])
+  	deleteLecture = StudentLecture.find_by(student_id: 3, #student_id
   	lecture_id: Lecture.find_by(name: params[:selected_lecture]).id).destroy
   end
 end

@@ -62,21 +62,23 @@
 					</tbody>
 				</table>
 				<div class="row">
-					<div class="col-md-6">
+					<div class="col-md-4">
 						集中講義
 					</div>
-					<div class="col-md-6">
+					<div class="col-md-8">
 						<table class="table table-bordered">
-							<thead>
-								<tr>
-									<td></td>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td></td>
-								</tr>
-							</tbody>
+							<% if @student_intensive_lectures.empty? %>
+							<% else %>
+								<% @student_intensive_lectures.each do |lecture| %>
+									<tbody>
+										<tr>
+											<td>
+												<%= lecture.name %>
+											</td>
+										</tr>
+									</tbody>
+								<% end %>
+							<% end %>
 						</table>
 					</div>
 				</div>
