@@ -21,9 +21,9 @@
   <div class="row">
     <div class="col-md-12">
       <p>登録休講日:
-      <%#if @cancel_lectures.count ==0 %>
+      <%if @cancel_lectures.count ==0 %>
         <p>登録されている休講はありません。</p>
-      <%#else%>
+      <%else%>
         <table class="table table-striped">
           <thead>
             <tr>
@@ -34,21 +34,23 @@
             </tr>
           </thead>
           <tbody>
+            <% @cancel_lectures.each do |cancel| %>
             <tr>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
+              <th><%= cancel.lecture.name %></th>
+              <th><%= cancel.cancel_date.strftime("%m") %></th>
+              <th><%= cancel.cancel_date.strftime("%d") %></th>
+              <th><%= cancel.period %></th>
             </tr>
+            <%end%>
           </tbody>
-        <%#end%>
+        <%end%>
       </table>
       </p>
 
       <p>登録補講日:
-      <%#if @supplement_lectures.count == 0 %>
+      <%if @supplement_lectures.count == 0 %>
         <p>登録されている補講はありません。</p>
-      <%#else%>
+      <%else%>
         <table class="table table-striped">
           <thead>
             <tr>
@@ -59,14 +61,16 @@
             </tr>
           </thead>
           <tbody>
+            <% @supplement_lectures.each do |supplement| %>
             <tr>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
+              <th><%= supplement.lecture.name %></th>
+              <th><%= supplement.supplement_date.strftime("%m") %></th>
+              <th><%= supplement.supplement_date.strftime("%d") %></th>
+              <th><%= supplement.period %></th>
             </tr>
+            <%end%>
           </tbody>
-        <%#end%>
+        <%end%>
       </table>
       </p>
     </div>
