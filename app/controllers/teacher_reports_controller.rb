@@ -23,7 +23,7 @@ class TeacherReportsController < TeacherBaseController
       @report.save!
       redirect_to teacher_reports_path, :notice => 'レポートの登録が完了しました。'
     else
-      redirect_to teacher_reports_path
+      redirect_to new_teacher_report_path, :alert =>'レポートの登録に失敗しました。入力値を確認してください！'
     end
   end
 
@@ -41,8 +41,10 @@ class TeacherReportsController < TeacherBaseController
   def get_teacher_lecture_id
     get_teacher = Teacher.find_by(:email => session[:user_email])
     get_lecture = get_teacher.lectures.find_by(:name => report_params[:lecture])
-    need_data = TeacherLecture.find_by(:Teacher_id => get_teacher.id, :Lecture_id => get_lecture.id)
-    need_data.id
+    if get_teacher.present? && get_lecture.present?
+      need_data = TeacherLecture.find_by(:Teacher_id => get_teacher.id, :Lecture_id => get_lecture.id)
+      need_data.id
+    end
   end
 
 end
