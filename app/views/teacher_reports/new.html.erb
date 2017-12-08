@@ -19,7 +19,7 @@
       <p><%= f.text_field :title, maxlength: 20, size:45 %></p>
 
       <p>締切日時:</p>
-      <p><%= f.date_select :deadline_date, {} %></p>
+      <p><%= f.text_field :deadline_date, id: 'datepicker' %></p>
 
       <p>内容(200文字まで):</p>
       <p><%= f.text_field :content, maxlength: 200, size: 100 %></p>
@@ -39,3 +39,10 @@
       </div>
     </div>
   </div>
+
+  <script type = 'text/javascript'>
+  	$("#datepicker").datepicker({
+      minDate: 0
+    });
+
+  </script>

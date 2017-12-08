@@ -17,14 +17,16 @@ class TeacherReportsController < TeacherBaseController
     title = report_params[:title]
     content = report_params[:content]
     deadline_date = report_params[:deadline_date]
-    teacher_lecture = Teacher.find_by(:email => session[:user_email]).lectures.find_by(name: report_params[:lecture]).teacher_lectures
-    @report = Report.create(teacher_lecture_id: teacher_lecture.ids, title: title, content: content, deadline_date: deadline_date)
+    teacher_lecture = Teacher.find_by(:email => session[:user_email]).lectures.find_by(name: report_params[:lecture]).
+    logger.debug "ここだ"
+    logger.debug teacher_lecture.inspect
+    @report = Report.create(teacher_lecture_id: teacher_lecture.id, title: title, content: content, deadline_date: deadline_date)
     #lecture=report_params.lecture
     if @report.valid?
-      @report.save
+      @report.save!
       redirect_to teacher_reports_path, :notice => 'レポートの登録が完了しました。'
     else
-      render :new
+      redirect_to teacher_reports_path
     end
   end
 
