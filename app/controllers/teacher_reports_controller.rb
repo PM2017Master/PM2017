@@ -17,10 +17,7 @@ class TeacherReportsController < TeacherBaseController
     title = report_params[:title]
     content = report_params[:content]
     deadline_date = report_params[:deadline_date]
-    teacher_lecture = Teacher.find_by(:email => session[:user_email]).lectures.find_by(name: report_params[:lecture]).
-    logger.debug "ここだ"
-    logger.debug teacher_lecture.inspect
-    @report = Report.create(teacher_lecture_id: teacher_lecture.id, title: title, content: content, deadline_date: deadline_date)
+    @report = Report.create(teacher_lecture_id: get_teacher_lecture_id, title: title, content: content, deadline_date: deadline_date)
     #lecture=report_params.lecture
     if @report.valid?
       @report.save!
@@ -40,4 +37,12 @@ class TeacherReportsController < TeacherBaseController
       .require(:report)
       .permit(:lecture, :title, :content, :deadline_date)
   end
+
+  def get_teacher_lecture_id
+    get_teacher = Teacher.find_by(:email => session[:user_email])
+    get_lecture = get_teacher.lectures.find_by(:name => report_params[:lecture])
+    need_data = TeacherLecture.find_by(:Teacher_id => get_teacher.id, :Lecture_id => get_lecture.id)
+    need_data.id
+  end
+
 end
