@@ -31,10 +31,6 @@
 
   #講義DBから削除
   def destroy
-  	resistLecture = StudentLecture.new
-		resistLecture.student_id = 3 #Student.find_by(email: session[:user_email]).id
-		resistLecture.lecture_id = Lecture.find_by(name: params[:selected_lecture]).id
-		resistLecture.save
   end
   
   def deleteindex

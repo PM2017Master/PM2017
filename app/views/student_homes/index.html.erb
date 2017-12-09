@@ -15,7 +15,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<% for period in 1..6 do %>
+						<% for period in 1..7 do %>
 							<tr>
 								<% for day in 1..6 do %>
 									<% if @student_lectures.empty? %>
@@ -28,9 +28,10 @@
 													( lecture.day == "火" && day == 2 ) ||
 													( lecture.day == "水" && day == 3 ) ||
 													( lecture.day == "木" && day == 4 ) ||
-													( lecture.day == "金" && day == 5 ) 
+													( lecture.day == "金" && day == 5 ) ||
+													( lecture.day == "土" && day == 6 ) 
 													) %>
-												<td> <% lecture.name %> </td>
+												<td> <%= lecture.name %> </td>
 											<% else %>
 												<td> </td>
 											<% end %>
