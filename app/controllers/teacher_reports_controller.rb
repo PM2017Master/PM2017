@@ -29,6 +29,9 @@ class TeacherReportsController < TeacherBaseController
 
   #レポートDBから削除
   def destroy
+    Report.delete(params[:id])
+    redirect_to teacher_reports_path,:notice => 'レポートを削除しました。'
+  else
   end
 
   private

@@ -18,9 +18,9 @@
         <tr>
           <th><%= report.lecture.name %></th>
           <th><%= report.title %></th>
-          <th><%#= report.deadline_date.(2i) %></th>
-          <th><%#= report.deadline_date.(3i) %></th>
-          <th>削除ボタン
+          <th><%= report.deadline_date.strftime("%m") %></th>
+          <th><%= report.deadline_date.strftime("%d") %></th>
+          <th><%= button_to '削除',{action: :destroy,id: report.id},method: :delete,class: 'btn btn-danger' %></th>
         </tr>
       <% end %>
     </tbody>
