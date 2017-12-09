@@ -1,4 +1,6 @@
 class StudentLecturesController < StudentBaseController
+  require "fileutils"
+
   #登録画面
   def new
   end
@@ -12,14 +14,56 @@ class StudentLecturesController < StudentBaseController
 
   #講義DBに登録
   def create
+    #まず、登録されている一般履修講義を全て削除
+    #student = Student.find_by(email: session[:email])
+    student_lectures = StudentLecture.where(student_id: 3) #student_id
+    student_lectures.each do |student_lecture|
+      if Lecture.find_by(id: student_lecture.lecture_id).is_intensive == false
+        student_lecture.destroy
+      end
+    end
+
   	uploaded_file = student_lecture_param[:file]
     path_name = "public/files/#{DateTime.now.strftime("%Y%m%d%H%M%S")}#{uploaded_file.original_filename}"
     File.open(path_name, 'wb') { |f|
       f.write(uploaded_file.read)
     }
-    StudentLecture.registe_lecture_data(1,path_name) #TODO:第一引数に現在ログインしている学生のID
+    
+    candidate_lectures = []
+    @not_exist_lectures = StudentLecture.registe_lecture_data(3,path_name) #student.id
+    @not_exist_lectures.each do |not_exists_lecture|
+      if not_exists_lecture.nil?
+        next
+      end
+      temp_candidate_lectures = Lecture.where('name LIKE ?', "%#{not_exists_lecture}%")
+      unless temp_candidate_lectures.empty?
+        candidate_lectures.push(temp_candidate_lectures)
+      end
+    end
+    
+    if candidate_lectures.empty?
+      redirect_to action: 'complete'
+    end
+  end
 
-  	redirect_to action: 'new'
+  def complete
+    #student = Student.find_by(email: session[:email])
+    if params[:selected_lectures]
+      @selected_lectures = params[:selected_lectures]
+      @selected_lectures.each do |selected_lecture|
+        unless Lecture.find_by(name: selected_lecture).nil?
+          l_id = Lecture.find_by(name: selected_lecture).id
+          obj = StudentLecture.new
+          obj.student_id = 3#student.id
+          obj.lecture_id = l_id
+          obj.save
+        end
+      end
+    end
+
+    Dir.chdir Rails.root.join('public').join('files')
+    FileUtils.rm(Dir.glob('*.*'))  
+    Dir.chdir Rails.root
   end
 
   private

@@ -1,3 +1,38 @@
 ﻿<h1>Student's Page</h1>
 <p>
+	登録できなかった講義があります。<br>
+	候補の中から、登録する講義を選択してください。
+	<%= form_tag("student_lectures/complete", method: :get) do %>
+		<% @not_exist_lectures.each do |not_exists_lecture| %>
+			<% if not_exists_lecture.nil? %>
+				<% next %>
+		  	<% end %>
+			<% unless Lecture.where('name LIKE ?', "%#{not_exists_lecture}%").empty? %>
+				<% candidate_lectures = Lecture.where('name LIKE ?', "%#{not_exists_lecture}%") %>	
+				「<%= not_exists_lecture %>」の候補<br>
+				<table class="table table-bordered">
+					<thead class="thead">
+						<tr>
+							<th>選択</th>
+							<th>講義名</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% candidate_lectures.each do |candidate_lecture| %>
+							<tr>
+								<td>
+									<%= radio_button_tag 'selected_lectures[]', value = candidate_lecture.name %>
+								</td>
+								<td>
+									<%= candidate_lecture.name %>
+								</td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+				<br>
+			<% end %>
+		<% end %>
+		<%= submit_tag 'OK' %>
+	<% end %>
 </p>

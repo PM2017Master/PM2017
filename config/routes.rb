@@ -51,6 +51,7 @@ end
   post 'student_intensive_lectures/delete' => 'student_intensive_lectures#delete'
   resources :student_intensive_lectures,only: [:index, :new, :create, :destroy]
 
+  get 'student_lectures/complete' => 'student_lectures#complete'
   get 'student_lectures/download_excel' => 'student_lectures#download_excel'
   resources :student_lectures,only: [:new, :create]
 

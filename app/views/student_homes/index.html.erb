@@ -15,68 +15,51 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-					</tbody>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-					</tbody>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-					</tbody>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-					</tbody>
-						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
+						<% for period in 1..7 do %>
+							<tr>
+								<% for day in 1..6 do %>
+									<% if @student_lectures.empty? %>
+										<td> </td>
+									<% else %>
+										<%  @student_lectures.each do |lecture| %>
+											<% if (lecture.period == period) &&
+													(
+													( lecture.day == "月" && day == 1 ) ||
+													( lecture.day == "火" && day == 2 ) ||
+													( lecture.day == "水" && day == 3 ) ||
+													( lecture.day == "木" && day == 4 ) ||
+													( lecture.day == "金" && day == 5 ) ||
+													( lecture.day == "土" && day == 6 ) 
+													) %>
+												<td> <%= lecture.name %> </td>
+											<% else %>
+												<td> </td>
+											<% end %>
+										<% end %>
+									<% end %>
+								<% end %>
+							</tr>
+						<% end %>
 					</tbody>
 				</table>
 				<div class="row">
-					<div class="col-md-6">
+					<div class="col-md-4">
 						集中講義
 					</div>
-					<div class="col-md-6">
+					<div class="col-md-8">
 						<table class="table table-bordered">
-							<thead>
-								<tr>
-									<td></td>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td></td>
-								</tr>
-							</tbody>
+							<% if @student_intensive_lectures.empty? %>
+							<% else %>
+								<% @student_intensive_lectures.each do |lecture| %>
+									<tbody>
+										<tr>
+											<td>
+												<%= lecture.name %>
+											</td>
+										</tr>
+									</tbody>
+								<% end %>
+							<% end %>
 						</table>
 					</div>
 				</div>
