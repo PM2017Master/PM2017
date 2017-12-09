@@ -1,25 +1,46 @@
 <h1>開講日変更</h1>
-<div class=container>
-  <div class="row">
-    <div class="col-md-12">
-      講義選択:
-      <div class="radio">
-        <label> </label>
+  <% if @lectures.errors.any? %>
+  <div id="error_explanation">
+  <% @lectures.errors.full_messages.each do |msg| %>
+      <ul>
+        <li><%= msg %></li>
+      </ul>
+      <% end %>
+  </div>
+  <%end%>
+<%= form_for @date, url:'teacher_reports' do |f| %>
+  <div class=container>
+    <div class="row">
+      <div class="col-md-12">
+
+        講義選択:
+        <% @lectures.each do |lecture| %>
+          <p><label> <%=f.radio.button :teacher_lecture_id, #teacher_lecture_idを求める %><%= lecture.name %> </label></p>
+        <%end%>
       </div>
     </div>
-  <div class="row">
-    <div class="col-md-12">
-      開講日設定:
-      
+    <div class="row">
+      <div class="col-md-12">
+        <p>開講日設定:</p>
+
+        <p><%= f.select :cancel_or_suppliment, [["休講", "?"], ["補講", "?"]], class: 'form-control', prompt: '選択してください。' %></p>
+
+        <p><%= f.label :"日付" %><br>
+          <%= f.date_select :deadline_date, {}, class: 'form-control' %></p>
+
+        <p> <%= f.label :"時限" %><br>
+        <%= f.select :period, [["1", "1"], ["2", "2"], ["3", "3"], ["4", "4"], ["5", "5"], ["6", "6"], ["7", "7"]], class: "form-control", prompt: '選択してください。'  %>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-9">
+
+      </div>
+      <div class="col-md-3">
+        <%= button_to "OK" %>
+        <%end%>
+        <%= button_to "戻る", {controller: 'teacher_homes', action: 'index'}, {method: :get, class: "btn btn-primary"} %>
+      </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-9">
-      
-    </div>
-    <div class="col-md-3">
-      <%= button_to "OK" %>
-      <%= button_to "戻る", {controller: 'teacher_homes', action: 'index'}, {method: :get, class: "btn btn-default"} %>
-    </div>
-  </div>
-</div>

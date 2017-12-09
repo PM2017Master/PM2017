@@ -11,6 +11,8 @@ gem 'kaminari'
 
 gem 'devise'
 
+gem 'seedbank'
+
 gem 'roo', "~> 2.7.0"
 
 # エラーメッセージの日本語化

@@ -64,8 +64,14 @@ class Lecture < ApplicationRecord
           where("department = ?",params[:department]) if (!params[:search].present? && !params[:faculty].present?)
         end
       else
-        Lecture.all
+        all
     end
+  end
+
+  def self.research params
+      teacher = Teacher.find_by("name like ?","%#{params[:search]}%")  if params[:search].present?
+      return Lecture.where("name IS NULL") if teacher.nil?
+      teacher.lectures
   end
 
   # 講義情報ダウンロードボタン押下時に呼び出される

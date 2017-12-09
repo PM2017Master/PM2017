@@ -27,6 +27,7 @@ class StaffOperateLecturesController < StaffBaseController
   #講義検索
   def search
     @lectures = Lecture.search(params).page(params[:page])
+    @lectures = Lecture.research(params).page(params[:page]) if @lectures.count == 0
     render 'index'
   end
 
