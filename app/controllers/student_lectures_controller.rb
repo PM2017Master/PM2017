@@ -14,9 +14,11 @@ class StudentLecturesController < StudentBaseController
 
   #講義DBに登録
   def create
+    Dir.chdir Rails.root
     #まず、登録されている一般履修講義を全て削除
-    #student = Student.find_by(email: session[:email])
-    student_lectures = StudentLecture.where(student_id: 3) #student_id
+    student = Student.find_by(email: session[:user_email])
+
+    student_lectures = StudentLecture.where(student_id: student.id)
     student_lectures.each do |student_lecture|
       if Lecture.find_by(id: student_lecture.lecture_id).is_intensive == false
         student_lecture.destroy
@@ -30,7 +32,7 @@ class StudentLecturesController < StudentBaseController
     }
     
     candidate_lectures = []
-    @not_exist_lectures = StudentLecture.registe_lecture_data(3,path_name) #student.id
+    @not_exist_lectures = StudentLecture.registe_lecture_data(student.id ,path_name)
     @not_exist_lectures.each do |not_exists_lecture|
       if not_exists_lecture.nil?
         next
@@ -47,14 +49,14 @@ class StudentLecturesController < StudentBaseController
   end
 
   def complete
-    #student = Student.find_by(email: session[:email])
+    student = Student.find_by(email: session[:user_email])
     if params[:selected_lectures]
       @selected_lectures = params[:selected_lectures]
       @selected_lectures.each do |selected_lecture|
         unless Lecture.find_by(name: selected_lecture).nil?
           l_id = Lecture.find_by(name: selected_lecture).id
           obj = StudentLecture.new
-          obj.student_id = 3#student.id
+          obj.student_id = student.id
           obj.lecture_id = l_id
           obj.save
         end

@@ -35,34 +35,34 @@
   
   def deleteindex
   	intensive_lectures = Lecture.where(is_intensive: true)
-  	student = Student.find_by(email: session[:email])
+  	student = Student.find_by(email: session[:user_email])
   	student_lectures = StudentLecture.where(student_id: student.id)
-	@student_intensive_lectures = []
+		@student_intensive_lectures = []
 	
-	intensive_lectures.each do |intensive_lecture|
-		student_lectures.each do |student_lecture|
-			if(intensive_lecture.id == student_lecture.lecture_id)
-				@student_intensive_lectures.push(intensive_lecture)
+		intensive_lectures.each do |intensive_lecture|
+			student_lectures.each do |student_lecture|
+				if(intensive_lecture.id == student_lecture.lecture_id)
+					@student_intensive_lectures.push(intensive_lecture)
+				end
 			end
 		end
-	end
 	
-	render "student_intensive_lectures/deleteindex"
+		render "student_intensive_lectures/deleteindex"
   end
   
   def deleteconfirm
     if params[:selected_lecture]
 	  	@selected_lecture = params[:selected_lecture]
-	else
-		@selected_lecture = 0
-	end
-	render "student_intensive_lectures/deleteconfirm"
+		else
+			@selected_lecture = 0
+		end
+		render "student_intensive_lectures/deleteconfirm"
   end
   
     #講義DBから削除
   def delete
-		#student = Student.find_by(email: session[:email])
-  	deleteLecture = StudentLecture.find_by(student_id: 3, #student_id
+		student = Student.find_by(email: session[:user_email])
+  	deleteLecture = StudentLecture.find_by(student_id: student.id,
   	lecture_id: Lecture.find_by(name: params[:selected_lecture]).id).destroy
   end
 end

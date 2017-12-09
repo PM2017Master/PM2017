@@ -1,7 +1,7 @@
 class StudentHomesController < StudentBaseController
 	def index
-  	#student = Student.find_by(email: session[:email])
-		temp_student_lectures = StudentLecture.where(student_id: 3) #student.id)
+  	student = Student.find_by(email: session[:user_email])
+		temp_student_lectures = StudentLecture.where(student_id: student.id)
 
 		@student_lectures = []
 		temp_student_lectures.each do |student_lecture|
@@ -16,6 +16,17 @@ class StudentHomesController < StudentBaseController
 				@student_intensive_lectures.push(Lecture.find_by(id: student_lecture.lecture_id))
 			end
 		end
+
+=begin
+    student = Student.find_by(email: session[:user_email]) 
+    student_lectures = StudentLecture.where(student_id: student.id)
+        student_lectures.each do |student_lecture|
+          if Lecture.find_by(id: student_lecture.lecture_id).is_intensive == false
+            student_lecture.destroy
+          end
+       end
+=end
+			 
   end
 
 end

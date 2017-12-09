@@ -14,7 +14,7 @@ class StudentLecture < ApplicationRecord
 
     not_exist_lectures = []
     
-    for period in 1..7 do
+    for period in 1..100  do    
       xlsx.sheet(0).row(period).each do |culum|
         unless culum.nil?
             if culum.index('(')
@@ -33,56 +33,9 @@ class StudentLecture < ApplicationRecord
           not_exist_lectures.push(culum)
         end
       end
-
-      xlsx.sheet(0).row(period).each do |culum|
-        unless culum.nil?
-          unless culum.index("限")
-           period -= 1
-          end
-        end
-        break
-      end
+      
     end
 
     return not_exist_lectures
   end
-
-
-  def self.get_not_exist_lectures(file_path)
-    logger.debug file_path
-    xlsx = Roo::Excelx.new(file_path)
-
-    logger.debug 'ok!'
-    logger.debug xlsx.sheet(0).row(4)
-
-    not_exist_lectures = []
-    
-    for period in 1..7 do
-      xlsx.sheet(0).row(period).each do |culum|
-        unless culum.nil?
-            if culum.index('(')
-              num = culum.index('(')
-              culum.slice!(num,culum.length)
-            end
-        end
-
-        if Lecture.exists?(:name => culum)
-        else
-          not_exist_lectures.push(culum)
-        end
-      end
-
-      xlsx.sheet(0).row(period).each do |culum|
-        unless culum.nil?
-          unless culum.index("限")
-           period -= 1
-          end
-        end
-        break
-      end
-    end
-
-    return not_exist_lectures
-  end
-
 end
