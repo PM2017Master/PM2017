@@ -1,16 +1,38 @@
 <h1>レポート一覧</h1>
+<%if @reports.count == 0 %>
+  <h1>レポートが登録されていません。</h1>
+<%else%>
+  レポート一覧:
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>講義名</th>
+        <th>レポート名</th>
+        <th>月</th>
+        <th>日</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @reports.each do |report| %>
+        <tr>
+          <th><%= report.lecture.name %></th>
+          <th><%= report.title %></th>
+          <th><%= report.deadline_date.strftime("%m") %></th>
+          <th><%= report.deadline_date.strftime("%d") %></th>
+          <th><%= button_to '削除',{action: :destroy,id: report.id},method: :delete,class: 'btn btn-danger' %></th>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
-      レポート一覧:
-    </div>
-  </div>
-  <div class="row">
     <div class="col-md-9">
-      
+
     </div>
     <div class="col-md-3">
-      <%= button_to "戻る", {controller:'teacher_homes', action:'index'}, {method: :get, class: "btn btn-default"} %>
+      <%= button_to "戻る", {controller:'teacher_homes', action:'index'}, {method: :get, class: "btn btn-primary"} %>
     </div>
   </div>
 </div>
