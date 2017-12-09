@@ -15,36 +15,39 @@ class StudentLecturesController < StudentBaseController
   #講義DBに登録
   def create
     Dir.chdir Rails.root
-    #まず、登録されている一般履修講義を全て削除
     student = Student.find_by(email: session[:user_email])
 
-    student_lectures = StudentLecture.where(student_id: student.id)
-    student_lectures.each do |student_lecture|
-      if Lecture.find_by(id: student_lecture.lecture_id).is_intensive == false
-        student_lecture.destroy
-      end
-    end
-
-  	uploaded_file = student_lecture_param[:file]
+    uploaded_file = student_lecture_param[:file]
     path_name = "public/files/#{DateTime.now.strftime("%Y%m%d%H%M%S")}#{uploaded_file.original_filename}"
     File.open(path_name, 'wb') { |f|
       f.write(uploaded_file.read)
     }
     
-    candidate_lectures = []
-    @not_exist_lectures = StudentLecture.registe_lecture_data(student.id ,path_name)
-    @not_exist_lectures.each do |not_exists_lecture|
-      if not_exists_lecture.nil?
-        next
+    unless File.extname(uploaded_file.original_filename) == ".xlsx"
+      redirect_to action: 'error'
+    else
+      student_lectures = StudentLecture.where(student_id: student.id)
+      student_lectures.each do |student_lecture|
+        if Lecture.find_by(id: student_lecture.lecture_id).is_intensive == false
+          student_lecture.destroy
+        end
       end
-      temp_candidate_lectures = Lecture.where('name LIKE ?', "%#{not_exists_lecture}%")
-      unless temp_candidate_lectures.empty?
-        candidate_lectures.push(temp_candidate_lectures)
+
+      candidate_lectures = []
+      @not_exist_lectures = StudentLecture.registe_lecture_data(student.id ,path_name)
+      @not_exist_lectures.each do |not_exists_lecture|
+        if not_exists_lecture.nil?
+          next
+        end
+        temp_candidate_lectures = Lecture.where('name LIKE ?', "%#{not_exists_lecture}%")
+        unless temp_candidate_lectures.empty?
+          candidate_lectures.push(temp_candidate_lectures)
+        end
       end
-    end
-    
-    if candidate_lectures.empty?
-      redirect_to action: 'complete'
+      
+      if candidate_lectures.empty?
+        redirect_to action: 'complete'
+      end
     end
   end
 
@@ -66,6 +69,10 @@ class StudentLecturesController < StudentBaseController
     Dir.chdir Rails.root.join('public').join('files')
     FileUtils.rm(Dir.glob('*.*'))  
     Dir.chdir Rails.root
+  end
+
+  def error
+    render "student_lectures/error"
   end
 
   private

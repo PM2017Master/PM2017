@@ -21,7 +21,7 @@
 						<% candidate_lectures.each do |candidate_lecture| %>
 							<tr>
 								<td>
-									<%= radio_button_tag 'selected_lectures[]', value = candidate_lecture.name %>
+									<%= check_box_tag 'selected_lectures[]', value = candidate_lecture.name %>
 								</td>
 								<td>
 									<%= candidate_lecture.name %>
