@@ -13,11 +13,24 @@
   end
   
   #集中講義登録画面
-  def new
-	resistLecture = StudentLecture.new
-	resistLecture.student_id = Student.find_by(email: session[:user_email]).id
-	resistLecture.lecture_id = Lecture.find_by(name: params[:selected_lecture]).id
-	resistLecture.save
+	def new
+		student = Student.find_by(email: session[:user_email])
+		resistLecture = StudentLecture.new
+		resistLecture.student_id = student.id
+		resistLecture.lecture_id = Lecture.find_by(name: params[:selected_lecture]).id
+		
+		student_lectures = StudentLecture.where(student_id: student.id)
+		duplication = false
+		student_lectures.each do |student_lecture|
+			if (resistLecture.student_id == student_lecture.student_id) &&
+				(resistLecture.lecture_id == student_lecture.lecture_id)
+				duplication = true
+			end
+		end
+
+		unless duplication
+			resistLecture.save
+		end
   end
 
   #講義DBに追加

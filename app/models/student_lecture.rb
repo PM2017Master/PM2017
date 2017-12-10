@@ -33,9 +33,9 @@ class StudentLecture < ApplicationRecord
           not_exist_lectures.push(culum)
         end
       end
-      
+
     end
 
-    return not_exist_lectures
+    return not_exist_lectures.uniq
   end
 end
