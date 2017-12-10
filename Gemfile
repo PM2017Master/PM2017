@@ -13,6 +13,8 @@ gem 'devise'
 
 gem 'seedbank'
 
+gem 'roo', "~> 2.7.0"
+
 # エラーメッセージの日本語化
 gem 'rails-i18n', '~> 5.0.0' # For 5.0.x and 5.1.x
 

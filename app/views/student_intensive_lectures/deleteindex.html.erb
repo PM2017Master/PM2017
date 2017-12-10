@@ -9,7 +9,7 @@
 				<% end %>
     		</div>
 			<div class="col-md-6">
-				<% unless @student_intensive_lectures.empty? %>
+			<% unless @student_intensive_lectures.empty? %>
 					<%= form_tag(student_intensive_lectures_deleteconfirm_path, method: :post) do %>
 					<table class="table table-bordered">
 						<thead class="thead">
@@ -41,10 +41,11 @@
 							<% end %>
 						</tbody>
 					</table>
-				<% end %>
+				
     		</div>
     	</div>
   			<%= submit_tag 'OK' %>
+			<% end %>
 			<% end %>
     		<%= button_to "戻る", {controller: 'student_homes', action: 'index'}, {method: :get, class: "btn btn-default"}%>
     	</div>
