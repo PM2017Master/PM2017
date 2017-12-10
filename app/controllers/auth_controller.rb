@@ -45,11 +45,12 @@ include AuthHelper
 
         if session[:user_email] == nil
             redirect_to root_path,:notice => 'ログインしていません。'
+            cookies[:_p_mapp_session] = nil
+
         else
             session[:user_email] = nil
             cookies[:_p_mapp_session] = nil
             redirect_to root_path,:notice => '正常にログアウトできました。'
-
         end
 
     end
