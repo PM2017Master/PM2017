@@ -1,4 +1,7 @@
 <h1>レポート登録</h1>
+<% if @lectures.count <= 0%>
+  <h2>担当している講義がありません。</h2>
+<%else%>
   <% if @report.errors.any? %>
   <div id="error_explanation">
   <% @report.errors.full_messages.each do |msg| %>
@@ -39,6 +42,7 @@
       </div>
     </div>
   </div>
+  <%end%>
 
   <script type = 'text/javascript'>
   	$("#datepicker").datepicker({

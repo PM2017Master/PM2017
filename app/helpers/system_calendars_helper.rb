@@ -15,7 +15,7 @@ module SystemCalendarsHelper
               sendcalendar(event_title, event_start, event_end, s.email)
           end
       end
-      redirect_to root_url
+      #redirect_to root_url
   end
 
   def sendcalendar(event_title, event_start, event_end, email)

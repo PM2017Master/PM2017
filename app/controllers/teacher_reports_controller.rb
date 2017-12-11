@@ -1,7 +1,8 @@
 class TeacherReportsController < TeacherBaseController
 
-  require("system_calenders_controller.rb")
-  require("system_emails_controller.rb")
+  include SystemCalendarsHelper
+  include SystemEmailsHelper
+  
   #レポート一覧
   def index
     @reports = Report.all
