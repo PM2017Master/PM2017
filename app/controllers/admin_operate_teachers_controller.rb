@@ -36,6 +36,13 @@ class AdminOperateTeachersController < AdminBaseController
   end
 
   def update
+    @teacher = Teacher.find(params[:id])
+    if @teacher.update_attributes(teacher_params)
+      redirect_to controller: :admin_operate_teachers, action: :index
+      # 更新に成功したときの処理
+    else
+      redirect_to controller: :admin_operate_teachers, action: :edit, id: @teacher.id
+    end
   end
 
   def destroy
