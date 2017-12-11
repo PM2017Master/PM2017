@@ -3,12 +3,17 @@ module SystemCalendarsHelper
 
   include AuthHelper
 
-  def calendar(event_type, lecture, event_start)
+  def calendar(event_type, lecture, start)
       #event_type = "レポート"
       #lecture = "プロジェクトマネジメント論"
+      d_start = Date.strptime(start, '%Y/%m/%d')
+      d_end = d_start.tomorrow
       event_title = "#{lecture}#{event_type}"
-      #event_start = Time.new(2017, 11, 29)
-      #event_end = Time.new(2017, 11, 30)
+      #event_start = DateTime.new(d_start.year, d_start.month, d_start.day)
+      #event_end = event_start.tomorrow
+      #event_end.day = event_end.day+1
+      event_start = Time.new(d_start.year, d_start.month, d_start.day)
+      event_end = Time.new(d_end.year, d_end.month, d_end.day)
       students = Lecture.find_by(name: lecture).students
       students.each do |s|
           unless s.azure_token.nil? #azure_tokenがnilでない
