@@ -1,6 +1,6 @@
 class AuthController < ApplicationController
 include AuthHelper
-
+layout 'auth_base'
     def gettoken
      token = view_context.get_token_from_code(params[:code])
      @email = view_context.get_user_email(token.token)
