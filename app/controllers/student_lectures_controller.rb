@@ -33,7 +33,7 @@ class StudentLecturesController < StudentBaseController
         end
       end
 
-      candidate_lectures = []
+      @candidate_lectures = []
       @not_exist_lectures = StudentLecture.registe_lecture_data(student.id ,path_name)
       @not_exist_lectures.each do |not_exists_lecture|
         if not_exists_lecture.nil?
@@ -41,17 +41,14 @@ class StudentLecturesController < StudentBaseController
         end
         temp_candidate_lectures = Lecture.where('name LIKE ?', "%#{not_exists_lecture}%")
         unless temp_candidate_lectures.empty?
-          candidate_lectures.push(temp_candidate_lectures)
+          @candidate_lectures.push(temp_candidate_lectures)
         end
-      end
-      
-      if candidate_lectures.empty?
-        redirect_to action: 'complete'
       end
     end
   end
 
   def complete
+    @error = false
     student = Student.find_by(email: session[:user_email])
     if params[:selected_lectures]
       @selected_lectures = params[:selected_lectures]
@@ -64,6 +61,8 @@ class StudentLecturesController < StudentBaseController
           obj.save
         end
       end
+    else
+      @error = true
     end
 
     Dir.chdir Rails.root.join('public').join('files')

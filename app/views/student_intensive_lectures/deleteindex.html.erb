@@ -3,43 +3,49 @@
 	<div class="container">
     	<div class="row">
     		<div class="col-md-6">
-    			集中講義取り消し：
+				集中講義取り消し：<br>
+				<% if @student_intensive_lectures.empty? %>
+					登録された集中講義はありません
+				<% end %>
     		</div>
-    		<div class="col-md-6">
-    			<%= form_tag(student_intensive_lectures_deleteconfirm_path, method: :post) do %>
-    			<table class="table table-bordered">
-					<thead class="thead">
-				  		<tr>
-				  			<th>選択</th>
-				    		<th>講義名</th>
-				    		<th>教員名</th>
-				  		</tr>
-					</thead>
-				 	<tbody>
-				 			<% lectureCount = 0 %>
-				    		<% @student_intensive_lectures.each do |lecture| %>
-				    		<% lectureCount += 1 %>
-					   		<tr>
-					   			<td>
-					   				<%= radio_button_tag 'selected_lecture', value = lecture.name %>
-					   			</td>
-					     		<td>
-					     			<%= lecture.name %>
-					     		</td>
-					     		<td>
-					      			<%  if lectureCount <= TeacherLecture.count
-					      				teacher_lecture = TeacherLecture.find_by(lecture_id: lecture.id)
-					      			%>
-					       			<%= Teacher.find(teacher_lecture.teacher_id).name %>
-					       			<% end %>
-					     		</td>
-					   		</tr>
-				   		<% end %>
-					</tbody>
-				</table>
+			<div class="col-md-6">
+			<% unless @student_intensive_lectures.empty? %>
+					<%= form_tag(student_intensive_lectures_deleteconfirm_path, method: :post) do %>
+					<table class="table table-bordered">
+						<thead class="thead">
+							<tr>
+								<th>選択</th>
+								<th>講義名</th>
+								<th>教員名</th>
+							</tr>
+						</thead>
+						<tbody>
+								<% lectureCount = 0 %>
+								<% @student_intensive_lectures.each do |lecture| %>
+								<% lectureCount += 1 %>
+								<tr>
+									<td>
+										<%= radio_button_tag 'selected_lecture', value = lecture.name %>
+									</td>
+									<td>
+										<%= lecture.name %>
+									</td>
+									<td>
+										<%  if lectureCount <= TeacherLecture.count
+											teacher_lecture = TeacherLecture.find_by(lecture_id: lecture.id)
+										%>
+										<%= Teacher.find(teacher_lecture.teacher_id).name %>
+										<% end %>
+									</td>
+								</tr>
+							<% end %>
+						</tbody>
+					</table>
+				
     		</div>
     	</div>
   			<%= submit_tag 'OK' %>
+			<% end %>
 			<% end %>
     		<%= button_to "戻る", {controller: 'student_homes', action: 'index'}, {method: :get, class: "btn btn-default"}%>
     	</div>
