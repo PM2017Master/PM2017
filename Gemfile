@@ -78,3 +78,6 @@ gem 'activerecord-session_store'
 gem 'microsoft_graph'
 
 gem 'bcrypt-ruby', '3.1.1.rc1', :require => 'bcrypt'
+
+#並列処理で使用
+gem 'parallel'

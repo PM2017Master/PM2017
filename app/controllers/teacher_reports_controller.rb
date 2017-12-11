@@ -2,7 +2,7 @@ class TeacherReportsController < TeacherBaseController
 
   include SystemCalendarsHelper
   include SystemEmailsHelper
-  
+
   #レポート一覧
   def index
     @reports = Report.all
@@ -25,7 +25,7 @@ class TeacherReportsController < TeacherBaseController
     #lecture=report_params.lecture
     if @report.valid?
       @report.save
-      calender("レポート", lecture, deadline_date)
+      calendar("レポート", lecture, deadline_date)
       sendmail_report(title, lecture, deadline_date, content)
       redirect_to teacher_reports_path, :notice => 'レポートの登録が完了しました。'
     else
