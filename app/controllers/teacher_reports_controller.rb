@@ -1,4 +1,7 @@
 class TeacherReportsController < TeacherBaseController
+
+  require("system_calenders_controller.rb")
+  require("system_emails_controller.rb")
   #レポート一覧
   def index
     @reports = Report.all
@@ -20,7 +23,9 @@ class TeacherReportsController < TeacherBaseController
     @report = Report.create(teacher_lecture_id: get_teacher_lecture_id, title: title, content: content, deadline_date: deadline_date)
     #lecture=report_params.lecture
     if @report.valid?
-      @report.save!
+      @report.save
+      calender("レポート", lecture, deadline_date)
+      sendmail_report(title, lecture, deadline_date, content)
       redirect_to teacher_reports_path, :notice => 'レポートの登録が完了しました。'
     else
       redirect_to new_teacher_report_path, :alert =>'レポートの登録に失敗しました。入力値を確認してください！'

@@ -1,4 +1,11 @@
 class TeacherLectureDatesController < TeacherBaseController
+  include SystemCalendarsHelper
+  include SystemEmailsHelper
+
+  def sendmail_lecture
+    @email = SystemEmails
+  end
+
   #開講日変更登録画面
   def new
     @lectures = Teacher.find_by(:email => session[:user_email]).lectures
@@ -12,6 +19,8 @@ class TeacherLectureDatesController < TeacherBaseController
         @cancel_lectures = CancelLecture.create(teacher_lecture_id: get_teacher_lecture_id, cancel_date: date_params[:cancel_date], period: date_params[:period])
         if @cancel_lectures.valid?
           @cancel_lectures.save!
+          calendar(date_params[:cancel_date_previous_change], date_params[:lecture], date_params[:cancel_date])
+          sendmail_lecture(date_params[:cancel_date_previous_change], date_params[:lecture], date_params[:cancel_date], date_params[:period])
           redirect_to teacher_homes_path, :notice => '休講の登録が完了しました。'
         else
           redirect_to new_teacher_lecture_date_path, :alert =>'休講の登録に失敗しました。入力値を確認してください！'
@@ -26,6 +35,8 @@ class TeacherLectureDatesController < TeacherBaseController
         @supplement_lectures = SupplementLecture.create(teacher_lecture_id: get_teacher_lecture_id, supplement_date: date_params[:cancel_date], period: date_params[:period])
         if @supplement_lectures.valid?
           @supplement_lectures.save!
+          calendar(date_params[:cancel_date_previous_change], date_params[:lecture], date_params[:cancel_date])
+          sendmail_lecture(date_params[:cancel_date_previous_change], date_params[:lecture], date_params[:cancel_date], date_params[:period])
           redirect_to teacher_homes_path, :notice => '補講の登録が完了しました。'
         else
           redirect_to new_teacher_lecture_date_path, :alert =>'補講の登録に失敗しました。入力値を確認してください！'
