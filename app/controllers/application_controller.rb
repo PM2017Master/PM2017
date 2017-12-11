@@ -21,7 +21,8 @@ class ApplicationController < ActionController::Base
 
   def needs_check?
     logger.debug controller_name
-    if controller_name.include?('welcom') || controller_name.include?('auth') || controller_name.include?('admin')
+    if controller_name.include?('welcom') || controller_name.include?('auth') || controller_name.include?('admin') ||controller_name.include?('sessions') 
+      false
     false
     else
       true
