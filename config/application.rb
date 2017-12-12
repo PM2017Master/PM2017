@@ -19,6 +19,10 @@ module PMapp
     # csvを扱うためにimport
     require 'csv'
 
+    #Activejobを使用
+
+    config.active_job.queue_adapter = :delayed_job
+    
     config.action_view.field_error_proc = Proc.new do |html_tag, instance|
     %Q(#{html_tag}).html_safe
   end

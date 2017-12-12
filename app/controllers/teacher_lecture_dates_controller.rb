@@ -16,7 +16,8 @@ class TeacherLectureDatesController < TeacherBaseController
         if @cancel_lectures.valid?
           @cancel_lectures.save!
           calendar(date_params[:cancel_date_previous_change], date_params[:lecture], date_params[:cancel_date])
-          sendmail_lecture(date_params[:cancel_date_previous_change], date_params[:lecture], date_params[:cancel_date], date_params[:period])
+          #sendmail_lecture(date_params[:cancel_date_previous_change], date_params[:lecture], date_params[:cancel_date], date_params[:period])
+          SendemailJob.perform_later(date_params[:cancel_date_previous_change], date_params[:lecture], date_params[:cancel_date], date_params[:period])
           redirect_to teacher_homes_path, :notice => '休講の登録が完了しました。'
         else
           redirect_to new_teacher_lecture_date_path, :alert =>'休講の登録に失敗しました。入力値を確認してください！'
@@ -33,7 +34,8 @@ class TeacherLectureDatesController < TeacherBaseController
           if @supplement_lectures.valid?
             @supplement_lectures.save!
             calendar(date_params[:cancel_date_previous_change], date_params[:lecture], date_params[:cancel_date])
-            sendmail_lecture(date_params[:cancel_date_previous_change], date_params[:lecture], date_params[:cancel_date], date_params[:period])
+            #sendmail_lecture(date_params[:cancel_date_previous_change], date_params[:lecture], date_params[:cancel_date], date_params[:period])
+            SendemailJob.perform_later(date_params[:cancel_date_previous_change], date_params[:lecture], date_params[:cancel_date], date_params[:period])
             redirect_to teacher_homes_path, :notice => '補講の登録が完了しました。'
           else
             redirect_to new_teacher_lecture_date_path, :alert =>'補講の登録に失敗しました。入力値を確認してください！'

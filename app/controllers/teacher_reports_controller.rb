@@ -26,7 +26,8 @@ class TeacherReportsController < TeacherBaseController
     if @report.valid?
       @report.save
       calendar("レポート", lecture, deadline_date)
-      sendmail_report(title, lecture, deadline_date, content)
+      #sendmail_report(title, lecture, deadline_date, content)
+      SendemailReportJob.perform_later(title, lecture, deadline_date, content)
       redirect_to teacher_reports_path, :notice => 'レポートの登録が完了しました。'
     else
       redirect_to new_teacher_report_path, :alert =>'レポートの登録に失敗しました。入力値を確認してください！'
