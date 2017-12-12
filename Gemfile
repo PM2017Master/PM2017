@@ -81,3 +81,4 @@ gem 'bcrypt-ruby', '3.1.1.rc1', :require => 'bcrypt'
 
 #並列処理で使用
 gem 'parallel'
+gem 'delayed_job_active_record'
