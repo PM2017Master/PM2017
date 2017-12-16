@@ -3,15 +3,12 @@
 	<div class="container">
 		集中講義検索：
 		<div class="row">
-			<%= form_tag(student_intensive_lectures_path, method: :get) do %>
-			    <label>学部</label>
-				<%= text_field_tag :faculty %>
-				<label>学科</label>
-				<%= text_field_tag :department %>
-				<label>検索ワード</label>
-				<%= text_field_tag :search_word %>
-				<%= submit_tag '検索' %>
-			<% end %>
+		<%= form_tag(student_intensive_lectures_path ,method: :get) do%>
+			学部:<%= select_tag :faculty,options_for_select(FACULTY,:selected => params[:faculty]), prompt: '選択してください。' %>
+			学科:<%= select_tag :department,options_for_select(DEPARTMENT,:selected => params[:department]), prompt: '選択してください。' %>
+			検索ワード:<%= text_field_tag :search,params[:search] %>
+			<%= submit_tag "検索" %>
+		  <%end%>
     	</div>
     	<div class="row">
     		<div class="col-md-6">
@@ -28,9 +25,7 @@
 				  		</tr>
 					</thead>
 				 	<tbody>
-				 			<% lectureCount = 0 %>
 				    		<% @intensive_lectures.each do |lecture| %>
-				    		<% lectureCount += 1 %>
 					   		<tr>
 					   			<td>
 					   				<%= radio_button_tag 'selected_lecture', value = lecture.name %>
@@ -39,11 +34,8 @@
 					     			<%= lecture.name %>
 					     		</td>
 					     		<td>
-					      			<%  if lectureCount <= TeacherLecture.count
-					      				teacher_lecture = TeacherLecture.find_by(lecture_id: lecture.id)
-					      			%>
+					      			<% teacher_lecture = TeacherLecture.find_by(lecture_id: lecture.id) %>
 					       			<%= Teacher.find(teacher_lecture.teacher_id).name %>
-					       			<% end %>
 					     		</td>
 					   		</tr>
 				   		<% end %>
