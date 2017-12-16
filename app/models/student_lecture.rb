@@ -14,7 +14,7 @@ class StudentLecture < ApplicationRecord
 
     not_exist_lectures = []
     
-    for period in 1..100  do    
+    for period in 1..50  do    
       xlsx.sheet(0).row(period).each do |culum|
         unless culum.nil?
             if culum.index('(')
