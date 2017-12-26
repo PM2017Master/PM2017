@@ -6,7 +6,7 @@
   学部:<%= select_tag :faculty,options_for_select(FACULTY,:selected => params[:faculty]), prompt: '選択してください。' %>
   学科:<%= select_tag :department,options_for_select(DEPARTMENT,:selected => params[:department]), prompt: '選択してください。' %>
   検索ワード:<%= text_field_tag :search,params[:search] %>
-  <%= submit_tag "Go!" %>
+  <%= submit_tag "検索" %>
 <%end%>
 </div>
 <!--/検索窓-->
